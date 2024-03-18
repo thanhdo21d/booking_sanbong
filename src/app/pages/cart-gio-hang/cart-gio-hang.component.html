@@ -1,0 +1,270 @@
+<section class="h-100 h-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div
+          class="card card-registration card-registration-2"
+          style="border-radius: 15px"
+        >
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div
+                [ngClass]="{
+                  'col-lg-8': user && user.cart && user.cart.length > 0,
+                  'col-12': !(user && user.cart && user.cart.length > 0)
+                }"
+              >
+                <div class="p-5">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-5"
+                  >
+                    <h1 class="fw-bold mb-0 text-black">Giỏ hàng</h1>
+                    <h6 class="mb-0 text-muted">
+                      {{
+                        user.cart && user.cart.length > 0 ? user.cart.length : 0
+                      }}
+                      Sản phẩm
+                    </h6>
+                  </div>
+
+                  <hr class="my-4" />
+                  <div *ngIf="user && user.cart">
+                    <div
+                      *ngFor="let item of user.cart; let i = index"
+                      class="row mb-4 d-flex justify-content-between align-items-center"
+                    >
+                      <div class="col-md-2 col-lg-2 col-xl-2">
+                        <img
+                          src="{{
+                            item.images
+                              ? item.images[0].url
+                              : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp'
+                          }}"
+                          class="img-fluid rounded-3"
+                          alt="Cotton T-shirt"
+                        />
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xl-3">
+                        <!-- <h6 class="text-muted">{{ item.title }}</h6> -->
+                        <h6 class="text-black mb-0">{{ item.title }}</h6>
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                        <button
+                          class="btn btn-link px-2"
+                          (click)="handleButtonClick(i, 'decrement')"
+                        >
+                          <i class="fas fa-minus"></i>
+                        </button>
+
+                        <input
+                          [id]="'form1-' + i"
+                          min="1"
+                          name="quantity"
+                          value="1"
+                          type="number"
+                          class="form-control form-control-sm"
+                        />
+
+                        <button
+                          class="btn btn-link px-2"
+                          (click)="handleButtonClick(i, 'increment')"
+                        >
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                      <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                        <h6 class="mb-0">{{ item.price }} VND</h6>
+                      </div>
+                      <div
+                        class="col-md-1 col-lg-1 col-xl-1 text-end text-muted"
+                        (click)="removeItem(item._id)"
+                      >
+                        <i class="fas fa-times"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="user && !user.cart.length"
+                    class="d-flex justify-content-center align-items-center"
+                  >
+                    <h5>Giỏ hàng trống</h5>
+                  </div>
+                  <div class="pt-5">
+                    <h6 class="mb-0">
+                      <a href="#" class="text-body"
+                        ><i class="fas fa-long-arrow-alt-left me-2"></i>Tiếp tục
+                        mua hàng</a
+                      >
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div
+                *ngIf="user && user.cart.length > 0"
+                class="col-lg-4 bg-grey"
+              >
+                <div class="p-4">
+                  <h3 class="fw-bold mb-5 mt-2 pt-1">Thanh toán</h3>
+                  <form [formGroup]="userInfo" (ngSubmit)="handleCheckout()">
+                    <div class="row">
+                      <div class="col-12">
+                        <h3>Thông tin đặt hàng</h3>
+
+                        <hr class="mt-1" />
+                      </div>
+
+                      <div class="col-12">
+                        <div class="card-body">
+                          <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername"
+                              >Họ tên</label
+                            >
+                            <input
+                              class="form-control"
+                              id="inputUsername"
+                              type="text"
+                              placeholder="Enter your username"
+                              value="username"
+                              formControlName="username"
+                            />
+                            <div
+                              *ngIf="
+                                checkUsername.invalid &&
+                                (checkUsername.touched || checkUsername.dirty)
+                              "
+                            >
+                              <span
+                                class="text-danger"
+                                *ngIf="checkUsername.errors?.['required']"
+                                >Họ tên là bắt buộc</span
+                              >
+                              <span
+                                class="text-danger"
+                                *ngIf="checkUsername.errors?.['minLength']"
+                                >Họ tên ít nhất 3 kí tự</span
+                              >
+                            </div>
+                          </div>
+
+                          <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress"
+                              >Email
+                            </label>
+                            <input
+                              class="form-control"
+                              id="inputEmailAddress"
+                              type="email"
+                              placeholder="Enter your email address"
+                              value="name@example.com"
+                              formControlName="email"
+                            />
+                            <div
+                              *ngIf="
+                                checkEmail.invalid &&
+                                (checkEmail.touched || checkEmail.dirty)
+                              "
+                            >
+                              <span
+                                class="text-danger"
+                                *ngIf="checkEmail.errors?.['required']"
+                                >Email là bắt buộc</span
+                              >
+                              <span
+                                class="text-danger"
+                                *ngIf="checkEmail.errors?.['email']"
+                                >Email không đúng định dạng</span
+                              >
+                            </div>
+                          </div>
+
+                          <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                              <label class="small mb-1" for="inputPhone"
+                                >Địa chỉ</label
+                              >
+                              <input
+                                class="form-control"
+                                type="string"
+                                placeholder="Enter your address"
+                                formControlName="address"
+                              />
+                              <div
+                                *ngIf="
+                                  checkAddress.invalid &&
+                                  (checkAddress.touched || checkAddress.dirty)
+                                "
+                              >
+                                <span
+                                  class="text-danger"
+                                  *ngIf="checkAddress.errors?.['required']"
+                                  >Address là bắt buộc</span
+                                >
+                              </div>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label class="small mb-1" for="inputBirthday"
+                                >Số ĐT</label
+                              >
+                              <input
+                                class="form-control"
+                                id="inputBirthday"
+                                type="text"
+                                placeholder="Enter your phone number"
+                                formControlName="phone"
+                              />
+                              <div
+                                *ngIf="
+                                  checkPhone.invalid &&
+                                  (checkPhone.touched || checkPhone.dirty)
+                                "
+                              >
+                                <span
+                                  class="text-danger"
+                                  *ngIf="checkPhone.errors?.['required']"
+                                  >Số điện thoại là bắt buộc</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="my-4" />
+
+                    <div class="d-flex justify-content-between mb-4">
+                      <h5 class=" ">Số tiền :</h5>
+                      <h5>{{ totalCart }} VND</h5>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <h5 class="mb-3">Shipping :</h5>
+
+                      <h5>{{ ship }} VND</h5>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div class="d-flex justify-content-between mb-5">
+                      <h5 class="text-uppercase">Tổng tiền :</h5>
+                      <h5>{{ totalAll }} VND</h5>
+                    </div>
+
+                    <div>
+                      <button
+                        type="submit"
+                        class="btn btn-dark btn-block btn-lg w-100"
+                        data-mdb-ripple-color="dark"
+                      >
+                        Mua ngay
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+.fet-title::before {
+  content: "";
+  display: block;
+  width: 35px;
+  max-width: 35px;
+  height: 3px;
+  border-radius: 1px;
+  margin-bottom: 5px;
+  background: #00d1ed;
+}
+.item {
+  width: 361px;
+  height: 272px;
+  border-radius: 15px;
+  // background-image: url("../../../assets/images/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  .modal-item {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 1200px) {
+  .item {
+    width: 50%;
+  }
+}
+@media (max-width: 575px) {
+  .item {
+    width: 100%;
+  }
+}

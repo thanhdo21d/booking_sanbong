@@ -1,0 +1,210 @@
+<!-- <app-layout-manager
+  [title]="title"
+  [theadTable]="theadTable"
+  [dataTbody]="usersList"
+/> -->
+
+<mat-tab-group>
+  <mat-tab label="Xác nhận đơn hàng">
+    <table mat-table [dataSource]="dataSourcePending" class="mat-elevation-z8">
+      <ng-container matColumnDef="STT">
+        <th mat-header-cell *matHeaderCellDef> # </th>
+        <td mat-cell *matCellDef="let element, let i = index"> {{i + 1}} </td>
+      </ng-container>
+      <ng-container matColumnDef="items">
+        <th mat-header-cell *matHeaderCellDef> Thông tin đơn hàng </th>
+        <td mat-cell *matCellDef="let element, let i = index">
+          <div class="product-item-container">
+            <div class="product-item-image">
+              <img [src]="element.items[0].product.images[0].url" alt="" class="" />
+            </div>
+            <div class="product-item-content">
+              <p class="">Tên: {{element.items[0].product.title}}</p>
+              <p class="">Giá: {{element.items[0].product.price}}</p>
+              <p class="">Số lượng: {{element.items[0].product.price}}</p>
+              <p class="">Ngày đặt: {{formatDate(element.createdAt)}}</p>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="inforOrderShipping">
+        <th mat-header-cell *matHeaderCellDef> Thông tin người nhận </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="info-shipping">
+            <p class="info-shipping__name">Tên: {{element.inforOrderShipping.name}}</p>
+            <p class="info-shipping__address">Address: {{element.inforOrderShipping.address}}</p>
+            <p class="info-shipping__phone">Phone: {{element.inforOrderShipping.phone}}</p>
+            <p class="info-shipping__noteShipping">Note: {{element.inforOrderShipping.noteShipping}}</p>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Trạng thái </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> Tổng tiền </th>
+        <td mat-cell *matCellDef="let element"> {{formatCurrency(element.total)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+          <button class="btn btn-primary" (click)="handleConfirmOrderDone(element._id)">
+            <i class="fa-solid fa-check"></i>
+          </button>
+          <button class="btn btn-danger" (click)="handleConfirmOrderCancel(element._id)">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </mat-tab>
+  <mat-tab label="Giao hàng thành công">
+    <table mat-table [dataSource]="dataSourceDone" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="STT">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element, let i = index"> {{i + 1}} </td>
+      </ng-container>
+      <ng-container matColumnDef="items">
+        <th mat-header-cell *matHeaderCellDef> Thông tin đơn hàng </th>
+        <td mat-cell *matCellDef="let element, let i = index">
+          <div class="product-item-container">
+            <div class="product-item-image">
+              <img [src]="element.items[0].product.images[0].url" alt="" class="" />
+            </div>
+            <div class="product-item-content">
+              <p class="">Tên: {{element.items[0].product.title}}</p>
+              <p class="">Giá: {{element.items[0].product.price}}</p>
+              <p class="">Số lượng: {{element.items[0].product.price}}</p>
+              <p class="">Ngày đặt: {{formatDate(element.createdAt)}}</p>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="inforOrderShipping">
+        <th mat-header-cell *matHeaderCellDef> Thông tin người nhận </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="info-shipping">
+            <p class="info-shipping__name">Tên: {{element.inforOrderShipping.name}}</p>
+            <p class="info-shipping__address">Address: {{element.inforOrderShipping.address}}</p>
+            <p class="info-shipping__phone">Phone: {{element.inforOrderShipping.phone}}</p>
+            <p class="info-shipping__noteShipping">Note: {{element.inforOrderShipping.noteShipping}}</p>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Trạng thái </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> Tổng tiền </th>
+        <td mat-cell *matCellDef="let element"> {{formatCurrency(element.total)}} </td>
+      </ng-container>
+      <ng-container>
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> {{formatCurrency(element.total)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt" class="d-none">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-tab>
+  <mat-tab label="Hủy đơn hàng">
+    <table mat-table [dataSource]="dataSourceCancel" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="STT">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element, let i = index"> {{i + 1}} </td>
+      </ng-container>
+      <ng-container matColumnDef="items">
+        <th mat-header-cell *matHeaderCellDef> Thông tin đơn hàng </th>
+        <td mat-cell *matCellDef="let element, let i = index">
+          <div class="product-item-container">
+            <div class="product-item-image">
+              <img [src]="element.items[0].product.images[0].url" alt="" class="" />
+            </div>
+            <div class="product-item-content">
+              <p class="">Tên: {{element.items[0].product.title}}</p>
+              <p class="">Giá: {{element.items[0].product.price}}</p>
+              <p class="">Số lượng: {{element.items[0].product.price}}</p>
+              <p class="">Ngày đặt: {{formatDate(element.createdAt)}}</p>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="inforOrderShipping">
+        <th mat-header-cell *matHeaderCellDef> Thông tin người nhận </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="info-shipping">
+            <p class="info-shipping__name">Tên: {{element.inforOrderShipping.name}}</p>
+            <p class="info-shipping__address">Address: {{element.inforOrderShipping.address}}</p>
+            <p class="info-shipping__phone">Phone: {{element.inforOrderShipping.phone}}</p>
+            <p class="info-shipping__noteShipping">Note: {{element.inforOrderShipping.noteShipping}}</p>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Trạng thái </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> Tổng tiền </th>
+        <td mat-cell *matCellDef="let element"> {{formatCurrency(element.total)}} </td>
+      </ng-container>
+      <ng-container>
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> {{formatCurrency(element.total)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt" class="d-none">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,102 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.blog-style2 {
+  border: none;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: transparent;
+  border: 0;
+  margin-bottom: 40px;
+
+  .image-frame {
+    overflow: hidden;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+    img {
+      width: 100%;
+      height: 222px;
+      object-fit: cover;
+      transition: all 0.4s ease-in-out;
+      -webkit-transition: transform 0.5s ease;
+      -moz-transition: transform 0.5s ease;
+      -ms-transition: transform 0.5s ease;
+      -o-transition: transform 0.5s ease;
+      transition: transform 0.5s ease;
+    }
+  }
+
+  .user-info img {
+    // width: 50%;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+    max-width: 50px;
+    border-radius: 50%;
+  }
+
+  .user-info {
+    display: flex;
+  }
+
+  .label span {
+    background-color: #5bc0de;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+  .card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+
+  .demo-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+
+  .card-flex-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-info {
+    flex: 1;
+    .author-block {
+      p {
+        margin-bottom: 0;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.blog-style2:hover {
+  box-shadow: 0 1rem 3rem rgba(black, 0.175);
+}
+
+.blog-style2:hover .image-frame img {
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -moz-transform: scale(1.5); /* Firefox */
+  -ms-transform: scale(1.5); /* IE 9 */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.1);
+  border-radius: 10px;
+}

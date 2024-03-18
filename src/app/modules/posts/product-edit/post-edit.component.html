@@ -1,0 +1,186 @@
+<div class="container">
+  <div class="row g-5">
+    <div class="col-6 text-capitalize">
+      <h2>Sửa sản phẩm</h2>
+    </div>
+    <div class="col-6">
+      <div class="d-flex justify-content-end align-items-center">
+        <a routerLink="/admin/manager-product">Quay lại</a>
+      </div>
+    </div>
+  </div>
+  <div class="row p-2">
+    <div class="col">
+      <form
+        class="mt-5 form"
+        [formGroup]="EditForm"
+        (submit)="handleSubmitPostForm()"
+      >
+        <div class="row g-5">
+          <div class="col-6">
+            <mat-form-field class="form__field">
+              <mat-label>Tiêu đề </mat-label>
+              <input type="text" matInput formControlName="title" />
+            </mat-form-field>
+            <div
+              *ngIf="
+                EditForm.get('title')?.invalid &&
+                (EditForm.get('title')?.dirty || EditForm.get('title')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="EditForm.get('title')?.errors?.['required']">
+                Tiêu đề là bắt buộc .
+              </div>
+              <div *ngIf="EditForm.get('title')?.errors?.['minlength']">
+                Tiêu đề ít nhất 4 ký tự .
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <mat-form-field class="form__field">
+              <mat-label>Danh mục </mat-label>
+              <mat-select formControlName="category">
+                <mat-option
+                  *ngFor="let category of categories"
+                  [value]="category._id"
+                  >{{ category.name }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+            <div
+              *ngIf="
+                EditForm.get('category')?.invalid &&
+                (EditForm.get('category')?.dirty ||
+                  EditForm.get('category')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="EditForm.get('category')?.errors?.['required']">
+                Danh mục bắt buộc
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <mat-radio-group
+              aria-label="Trạng thái bài post"
+              formControlName="is_active"
+            >
+              <mat-radio-button #radioButton value="public"
+                >Public</mat-radio-button
+              >
+              <mat-radio-button #radioButton1 value="private"
+                >Private</mat-radio-button
+              >
+            </mat-radio-group>
+            <div
+              *ngIf="
+                EditForm.get('status')?.invalid &&
+                (EditForm.get('status')?.dirty ||
+                  EditForm.get('status')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="EditForm.get('status')?.errors?.['required']">
+                Trạng thái là bắt buộc
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <mat-form-field class="form__field">
+              <mat-label>Duyệt sản phẩm</mat-label>
+              <mat-select formControlName="status">
+                <mat-option value="pending">Pending</mat-option>
+                <mat-option value="approved">Approved</mat-option>
+                <mat-option value="rejected">Reject</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field class="form__field">
+              <mat-label>Giá </mat-label>
+              <input type="price" matInput formControlName="price" />
+            </mat-form-field>
+            <div
+              *ngIf="
+                EditForm.get('price')?.invalid &&
+                (EditForm.get('price')?.dirty || EditForm.get('price')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="EditForm.get('price')?.errors?.['required']">
+                Giá sản phẩm là bắt buộc.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mb-5">
+            <input
+              #fileInput
+              class="form-control"
+              type="file"
+              accept="image/*"
+              id="formFileMultiple"
+              formControlName="images"
+              multiple
+              (change)="handleFileInput($event)"
+            />
+            <div
+              *ngIf="
+                EditForm.get('images')?.invalid &&
+                (EditForm.get('images')?.dirty ||
+                  EditForm.get('images')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="EditForm.get('images')?.errors?.['required']">
+               Ảnh là bắt buộc
+              </div>
+            </div>
+          </div>
+          <div class="image-preview" *ngIf="imagePreviews.length > 0">
+            <div class="preview-container" *ngFor="let image of imagePreviews">
+              <div
+                class="preview-remove"
+                (click)="handleRemoveImage(image.public_id)"
+              >
+                <i class="fa-solid fa-circle-xmark"></i>
+              </div>
+              <img [src]="image.url" class="preview-image" alt="image" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-1">
+          <ckeditor
+            [editor]="Editor"
+            formControlName="content"
+            (ready)="onEditorReady($event)"
+          >
+          </ckeditor>
+          <div
+            *ngIf="
+              EditForm.get('content')?.invalid &&
+              (EditForm.get('content')?.dirty ||
+                EditForm.get('content')?.touched)
+            "
+            class="text-danger"
+          >
+            <div *ngIf="EditForm.get('content')?.errors?.['required']">
+              Mô tả sản phẩm là bắt buộc
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          [disabled]="EditForm.invalid"
+          class="btn btn-primary d-flex justify-content-center align-items-center w-100"
+        >
+          <i class="fa-solid fa-save mx-2"></i>
+          <span>Sửa</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

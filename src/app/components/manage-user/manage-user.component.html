@@ -1,0 +1,13 @@
+<app-layout-manager
+  [title]="title"
+  [theadTable]="theadTable"
+  (delete)="handleDeleteUser($event)"
+  [dataTbody]="usersList"
+  [titleModal]="titleModal"
+  [userForm]="userForm"
+  [linkActive]="linkActive"
+  [paginationObj]="paginationObj"
+  (gotoPage)="gotoPage($event)"
+  (prevPage)="prevPage($event)"
+  (nextPage)="nextPage($event)"
+/>

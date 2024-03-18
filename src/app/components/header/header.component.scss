@@ -1,0 +1,83 @@
+.search-input {
+  width: 100%;
+  max-width: 100%;
+  height: 60px;
+}
+
+.btn-signup {
+  width: 191px;
+  height: 60px;
+  line-height: 60px;
+  max-width: 191px;
+  background: white;
+  color: #00b4aa;
+  border: 1px solid #00b4aa;
+}
+
+.btn-signin {
+  width: 191px;
+  height: 60px;
+  line-height: 60px;
+  max-width: 191px;
+  background: #00b4aa;
+}
+
+#nav-input {
+  display: none;
+}
+
+.nav-action {
+  .fa-xmark,
+  .fa-bars {
+    display: none;
+  }
+}
+@media (max-width: 576px) {
+}
+@media (max-width: 768px) {
+  .menu {
+    width: 100%;
+    flex-direction: column;
+    gap: unset !important;
+    position: fixed;
+    top: 92px;
+    left: -100%;
+    z-index: 999;
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    transition: all 0.5s ease;
+    li {
+      padding: 15px 0;
+      transition: all 0.5s ease;
+    }
+    li:hover {
+      background: #ccc;
+    }
+    li a {
+      display: block;
+    }
+  }
+  .nav-action {
+    .fa-bars {
+      display: block;
+    }
+    .fa-xmark,
+    .fa-bars {
+      font-size: 30px;
+      margin-left: 20px;
+    }
+  }
+  #nav-input:checked ~ .menu {
+    left: 0;
+  }
+  #nav-input:checked ~ .nav-action .fa-bars {
+    display: none;
+  }
+  #nav-input:checked ~ .nav-action .fa-xmark {
+    display: block;
+  }
+}
+// #menu-dropdown:checked ~ .menu-drd {
+//   display: block !important;
+// }

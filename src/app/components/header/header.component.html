@@ -1,0 +1,105 @@
+<header>
+  <!-- Navbar -->
+  <div class="row align-items-center py-3">
+    <div class="col-6 d-flex align-items-center">
+      <a routerLink="/"
+        ><img [width]="43" [height]="56" src="./assets/images/logo.png" alt=""
+      /></a>
+      <ul class="d-flex m-0 gap-5">
+        <li>
+          <a
+            class="text-decoration-none font-500 text-black text-xl"
+            routerLink="/"
+            >Trang chủ</a
+          >
+        </li>
+
+        <li>
+          <a
+            class="text-decoration-none font-500 text-black text-xl"
+            routerLink="blog"
+            >Danh Mục Sản Phẩm</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-4">
+      <div class="position-relative">
+        <input
+          type="text"
+          [value]="searchValue"
+          class="search-input ps-4 py-3 border border-2 rounded text-medium text-gray"
+          placeholder="Search posts..."
+          (input)="onInputChange($event)"
+        />
+
+        <i
+          (click)="handleClear()"
+          class="fa-solid {{
+            searchValue ? 'fa-xmark' : 'fa-magnifying-glass'
+          }}  position-absolute top-50 translate-middle-y text-gray text-medium"
+          style="right: 16px"
+        ></i>
+        <app-search-result
+          [searchResult]="searchResult"
+          [isShowSearch]="isShowSearch"
+        ></app-search-result>
+      </div>
+    </div>
+
+    <div class="col-2 d-flex justify-content-end">
+      <ng-container *ngIf="isLogin; else loginButton">
+        <div class="dropdown" (click)="toggleDropdown()">
+          <a
+            id="navbarDropdownMenuAvatar"
+            class="dropdown-toggle d-flex align-items-center hidden-arrow"
+            role="button"
+          >
+            <img
+              [src]="
+                userInfo.avatar ||
+                'https://api.multiavatar.com/' + userInfo.username + '.png'
+              "
+              class="rounded-circle avatarHeader"
+              style="object-fit: cover"
+              width="60"
+              height="60"
+              [alt]="userInfo.username"
+            />
+          </a>
+
+          <ul
+            class="dropdown-menu dropdown-menu-end {{
+              isHidden ? 'd-none' : 'd-block'
+            }}"
+          >
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/user-info/{{ userInfo.id }}"
+                >My profile</a
+              >
+            </li>
+            <li *ngIf="userInfo.role === 'admin'">
+              <a class="dropdown-item" routerLink="/admin">Admin</a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" routerLink="/" (click)="handleLogout()"
+                >Đăng xuất</a
+              >
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+      <ng-template #loginButton>
+        <a
+          routerLink="login"
+          class="d-inline-block text-center btn-signin text-decoration-none text-white rounded text-xl font-600"
+          >Đăng nhập</a
+        >
+      </ng-template>
+    </div>
+  </div>
+</header>
