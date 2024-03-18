@@ -13,7 +13,6 @@ import { ProductsService } from 'src/app/services/products/products.service';
 export class ProductsListPageComponent {
   isActive = false;
   posts: IPosts[] = [];
-
   currentPage: number = 1;
   totalDocs!: number;
   totalPages!: number;
@@ -44,8 +43,8 @@ export class ProductsListPageComponent {
     this.postService
       .getPostsApporved(this.currentPage)
       .subscribe((allPosts) => {
-        this.posts = allPosts.posts.docs;
-
+        console.log(allPosts,'allPosts')
+        this.posts = allPosts.data.items;
         this.currentPage = allPosts.posts.page;
         this.totalPages = allPosts.posts.totalPages;
         this.hasNextPage = allPosts.posts.hasNextPage;

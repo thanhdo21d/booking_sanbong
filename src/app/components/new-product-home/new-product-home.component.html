@@ -1,74 +1,13 @@
-<section class="new-post-area mb-5">
-  <div class="new-post-title mb-4">
-    <h2 class="text-3A1097 font-600 text-2xl">Newest update</h2>
-  </div>
-  <div class="row justify-content-center gx-5" style="height: 600px">
-    <div class="post-left col-sm-12 col-lg-6 mb-5 h-100">
-      <div class="img mb-4">
-        <a *ngIf="newPost && newPost._id" routerLink="/posts/{{ newPost._id }}" class="text-decoration-none text-black">
-          <img *ngFor="let img of newPost?.images" [src]="img.url" class="img-fluid" alt=""
-            style="object-fit: cover; width: 100%; height: 500px" />
-        </a>
-      </div>
-
-      <div class="post-left-content">
-        <div class="post-left-top">
-          <div class="tag mb-2">
-            <span class="d-inline-block font-600 bg-F3EDFF text-6B6B6B rounded-4 text-sm px-3"
-              *ngIf="newPost && newPost.category.name">{{ newPost.category.name }}</span>
-          </div>
-          <div class="new-post-item-title">
-            <h3 *ngIf="newPost && newPost.title">{{ newPost.title }}</h3>
-          </div>
-        </div>
-        <div class="post-left-bottom">
-          <div class="info d-flex align-items-center gap-3">
-            <span class="text-6B6B6B text-sm font-600" *ngIf="newPost && newPost.createdAt">{{
-              handleFomatDate(newPost.createdAt) }}</span>
-            <span class="d-inline-block rounded-circle" style="width: 6px; height: 6px; background: #b1b5c3"></span>
-            <a class="text-decoration-none" *ngIf="newPost" routerLink="/user-info/{{ newPost.author._id }}">
-              <span class="text-6B6B6B text-sm font-600">{{
-                newPost.author ? newPost.author.username : "anonymous"
-                }}</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-lg-6 right px-4 h-100">
-      <div class="post-lists" *ngIf="posts && posts.length > 0">
-      
-        <div class="row post-item" *ngFor="let post of posts.slice(0, 3)">
-          <div class="col-4">
-            <a *ngIf="post && post._id" routerLink="/posts/{{ post._id }}" class="text-decoration-none text-black">
-              <div class="img">
-                <img *ngIf="post && post.images[0].url" [src]="post.images[0].url" class="img-fluid" alt="" />
-              </div>
-            </a>
-          </div>
-          <div class="col-8">
-            <div class="tag mb-2">
-              <span *ngIf="post && post.category.name"
-                class="d-inline-block font-600 bg-light text-6B6B6B rounded-3 text-sm px-3">{{ post.category.name
-                }}</span>
-            </div>
-            <div class="post-item-title mb-3">
-              <a *ngIf="post && post._id" routerLink="/posts/{{ post._id }}" class="text-decoration-none text-black">
-                <h4 class="text-xl">{{ post.title }}</h4>
-              </a>
-            </div>
-            <div class="info d-flex align-items-center gap-3">
-              <span *ngIf="post && post.createdAt" class="text-6B6B6B text-sm font-600">{{ post.createdAt }}</span>
-              <span class="d-inline-block rounded-circle" style="width: 6px; height: 6px; background: #b1b5c3"></span>
-              <a class="text-decoration-none" *ngIf="post && post.author" routerLink="/user-info/{{ post.author._id }}">
-                <span class="text-6B6B6B text-sm font-600">{{
-                  post.author ? post.author.username : "anonymous"
-                  }}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="block-banner-search" style="background-image: url(https://datsantructuyen.vn/images/config/banner_1658716046.jpg)">
+	<div class="container">
+		<div class="wrap-banner-search">
+			<div class="big-tt">
+				FIND <span>YOUR</span> STADIUM
+			</div>
+			<div class="note">
+				Tìm kiếm sân chơi thể thao và nhà thi đấu khắp Hà Nội
+			</div>
+			<button type="button" class="button-search-soccer" routerLink="/blog" onclick="submit_form_search_cat()">Tìm kiếm sân chơi</button>
+		</div>
+	</div>
+</div>

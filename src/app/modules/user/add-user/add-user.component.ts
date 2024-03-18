@@ -18,7 +18,9 @@ export class AddUserComponent {
     password: ['', [Validators.required, Validators.minLength(5)]],
     email: ['', [Validators.required, Validators.email]],
     role: ['user', [Validators.required]],
+    gender: ['other', [Validators.required]],
     avatar: ['', [Validators.required]],
+    cfpassword: ['', [Validators.required]],
   });
   constructor(
     private userService: UserService,
@@ -58,17 +60,19 @@ export class AddUserComponent {
     );
   }
   onHandleSubmit() {
-    if (this.userForm.invalid) return;
+
     const user: IUserRequest = {
-      username: this.userForm.value.username || '',
+      name: this.userForm.value.username || '',
       password: this.userForm.value.password || '',
       email: this.userForm.value.email || '',
-      role: this.userForm.value.role || '',
-      avatar: this.userForm.value.avatar || '',
+      // role: this.userForm.value.role || '',
+      // avatar: this.userForm.value.avatar || '',
+      gender: this.userForm.value.gender || '',
+      confirmPassword: this.userForm.value.cfpassword || '',
     };
     this.userService.createUser(user).subscribe(
-      () => {
-        // console.log(data);
+      (data) => {
+        console.log(data);
         this.toastr.success('Create user successful');
         this.redirect.navigate(['admin/manager-users']);
       },

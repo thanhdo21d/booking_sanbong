@@ -77,6 +77,27 @@
           </div>
           <div class="col-6">
             <mat-form-field class="form__field">
+              <mat-label>gender</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option value="male">male</mat-option>
+                <mat-option value="girl">gril</mat-option>
+                <mat-option value="other">other</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div
+              *ngIf="
+                userForm.get('gender')?.invalid &&
+                (userForm.get('gender')?.dirty || userForm.get('gender')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="userForm.get('gender')?.errors?.['required']">
+                gender is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <mat-form-field class="form__field">
               <mat-label>Password</mat-label>
               <input type="password" matInput formControlName="password" />
             </mat-form-field>
@@ -93,6 +114,27 @@
               </div>
               <div *ngIf="userForm.get('password')?.errors?.['minlength']">
                 Password must be 6 characters.
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <mat-form-field class="form__field">
+              <mat-label>confirm Password</mat-label>
+              <input type="password" matInput formControlName="cfpassword" />
+            </mat-form-field>
+            <div
+              *ngIf="
+                userForm.get('cfpassword')?.invalid &&
+                (userForm.get('cfpassword')?.dirty ||
+                  userForm.get('cfpassword')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="userForm.get('cfpassword')?.errors?.['required']">
+                cfpassword is required.
+              </div>
+              <div *ngIf="userForm.get('cfpassword')?.errors?.['minlength']">
+                cfpassword must be 6 characters.
               </div>
             </div>
           </div>
@@ -131,9 +173,9 @@
             </div>
           </div>
         </div>
-
+        <!-- [disabled]="!userForm.valid" -->
         <button
-          [disabled]="!userForm.valid"
+
           type="submit"
           class="btn btn-primary d-flex justify-content-center align-items-center w-100"
         >

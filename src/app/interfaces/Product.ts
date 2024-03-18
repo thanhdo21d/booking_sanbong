@@ -10,7 +10,11 @@ interface IImage {
 export interface IPosts {
   _id: string;
   title: string;
+  name?: string;
+  staffId?: string;
+  description?: string;
   author: IUser;
+  id?: string;
   content: string;
   images: IImage[];
   likes: number | string;

@@ -30,20 +30,13 @@ export class ProductsService {
   getAllPosts(page: number | string = 1): Observable<IDocPosts> {
     return this.http.get<IDocPosts>(`${baseURL}/posts?_page=${page}`);
   }
-  getPostsApporved(data : any): Observable<any> {
+  getPostsApporved(data: any): Observable<any> {
     return this.http.post<any>(
-      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetData`,
-      {
-        pageIndex: 0,
-        pageSize: 0,
-        userId: '11111111-1111-1111-1111-111111111111',
-        staffId: '11111111-1111-1111-1111-111111111111',
-        status: 'string',
-      }
+      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetData`,{}
     );
   }
   getPost(id: number | string): Observable<any> {
-    return this.http.get<any>(`${baseURL}/posts/${id}`);
+    return this.http.get<any>(`https://975a-222-252-24-198.ngrok-free.app/api/Field/GetFees/${id}`);
   }
   deleteFakePost(id: number | string) {
     return this.http.put(`${baseURL}/posts/delete-fake/${id}`, {

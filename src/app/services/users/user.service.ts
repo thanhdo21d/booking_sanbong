@@ -7,20 +7,31 @@ import {
   IUserResponse,
 } from 'src/app/interfaces/User';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseURL } from 'src/app/utils/instance';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   baseURL: string = '';
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.baseURL = `${baseURL}/users`;
   }
-
+  getAccessToken() {
+    const accessToken = JSON.parse(localStorage.getItem('accessToken') || '');
+    if (!accessToken || accessToken === '') {
+      this.router.navigate(['/login-admin']);
+    }
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${accessToken}`,
+    });
+    const options = { headers: headers };
+    return options;
+  }
   /* getAllUsers */
   getAllUsers(page: number | string = 1): Observable<IUserDocs> {
     return this.http.get<IUserDocs>(`${this.baseURL}?_page=${page}&&_limit=10`);
@@ -37,8 +48,29 @@ export class UserService {
     return this.http.get<IUserResponse>(`${this.baseURL}/${id}`);
   }
   /* create */
+  createStaff(user: IUserRequest) {
+    return this.http.post(
+      'https://975a-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
+      user
+    );
+  }
   createUser(user: IUserRequest) {
-    return this.http.post(`${this.baseURL}/create`, user);
+    return this.http.post(
+      'https://975a-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
+      user
+    );
+  }
+  createManager(user: IUserRequest) {
+    return this.http.post(
+      'https://975a-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
+      user
+    );
+  }
+  createOwner(user: IUserRequest) {
+    return this.http.post(
+      'https://975a-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
+      user
+    );
   }
   /* update */
   updateUser(id: string | undefined, user: IUserRequest) {

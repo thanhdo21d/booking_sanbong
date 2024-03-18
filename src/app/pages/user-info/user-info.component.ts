@@ -21,7 +21,7 @@ export class UserInfoComponent {
   userInfo = this.formUserInfo.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
-
+    type: ['', [Validators.required, Validators.required]],
     address: [''],
     phone: [''],
   });

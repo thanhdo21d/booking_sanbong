@@ -56,13 +56,16 @@ export interface IUserRequest {
   _id?: string;
   id? : string;
   username?: string;
+  name?: string;
   password?: string;
+  confirmPassword?: string;
   email?: string;
   phone?: string;
   address?: string;
   avatar?: string;
   role?: string;
   cart?: any;
+  gender? : string;
 }
 
 export interface IUserPosts {

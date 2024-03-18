@@ -22,8 +22,8 @@ export class FeatureComponent {
   /* get all posts */
   getAllPosts() {
     this.postsService.getPostsApporved('').subscribe((res) => {
-      console.log(res,'fwqd');
-      this.featureLists = res.data.items;
+      console.log(res.data.items,'fwqd');
+      this.featureLists = res.data.items.slice(0,5);
     });
   }
   handleFomatDate(dateString: string) {

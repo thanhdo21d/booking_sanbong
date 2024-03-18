@@ -65,7 +65,6 @@ export class ManageUserComponent {
       .subscribe((users) => {
         // console.log(users);
         this.usersList = users.docs;
-
         this.paginationObj.currentPage = users.page;
         this.paginationObj.totalPage = users.totalPages;
         this.paginationObj.totalDocs = users.totalDocs;

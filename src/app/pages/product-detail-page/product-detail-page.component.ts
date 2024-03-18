@@ -39,7 +39,7 @@ export class ProductsDetailPageComponent {
       this.postService.getPost(id!).subscribe(
         (data) => {
           this.post = data.post;
-
+          console.log(data,"db")
           this.cateService
             .getRelatedPost(data.post.category._id)
             .subscribe(({ data }) => {
@@ -49,7 +49,7 @@ export class ProductsDetailPageComponent {
         () => {
           this.toastr.error("Couldn't find this post.Please try again😥😥");
           // alert("Couldn't find this post.Please try again😥😥");
-          this.redirect.navigate(['/']);
+          // this.redirect.navigate(['/']);
         }
       );
     });
