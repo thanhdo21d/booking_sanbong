@@ -84,7 +84,11 @@
             <li *ngIf="userInfo.role === 'admin'">
               <a class="dropdown-item" routerLink="/admin">Admin</a>
             </li>
-
+            <li>
+              <a class="dropdown-item" routerLink="/cart"
+                >Lịch sử</a
+              >
+            </li>
             <li>
               <a class="dropdown-item" routerLink="/" (click)="handleLogout()"
                 >Đăng xuất</a

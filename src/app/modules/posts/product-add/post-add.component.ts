@@ -21,8 +21,11 @@ export class PostAddComponent {
   postForm = this.builder.group({
     title: ['', [Validators.required, Validators.minLength(4)]],
     content: ['', [Validators.required]],
-
-    images: [[''], [Validators.required]],
+    images: [
+      ['f15eb44c-13eb-4585-9ddf-a532d8e03a7a.png'],
+      [Validators.required],
+    ],
+    address: ['', [Validators.required]],
     author: [''],
     category: ['', [Validators.required]],
     is_active: ['public', [Validators.required]],
@@ -75,7 +78,6 @@ export class PostAddComponent {
     });
   }
   handleSubmitPostForm() {
-    if (this.postForm.invalid) return;
     /* lấy ra thông tin người dùng */
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     if (!user) {
@@ -85,23 +87,35 @@ export class PostAddComponent {
     /* lấy ra thông tin   */
     const userId = user._id;
     const post = {
-      title: this.postForm.value.title,
-      content: this.postForm.value.content,
-      category: this.postForm.value.category,
+      Name: this.postForm.value.title,
+      Description: this.postForm.value.content,
+      // category: this.postForm.value.category,
       images: this.urls,
-      author: userId,
-      is_active:
-        this.postForm.value.is_active === '' ||
-        this.postForm.value.is_active === 'public'
-          ? true
-          : false,
-      status: this.postForm.value.status,
+      Address: this.postForm.value.address,
+      // is_active:
+      //   this.postForm.value.is_active === '' ||
+      //   this.postForm.value.is_active === 'public'
+      //     ? true
+      //     : false,
+      // status: this.postForm.value.status,
       price: this.postForm.value.price,
     };
-
-    this.postsService.createPost(post).subscribe(
+    const postData = new FormData();
+    if (this.postForm.value.title) {
+      postData.append('Name', this.postForm.value.title);
+    }
+    if (this.postForm.value.content) {
+      postData.append('Description', this.postForm.value.content);
+    }
+    if (this.postForm.value.address) {
+      postData.append('Address', this.postForm.value.address);
+    }
+    for (const image of this.urls) {
+      postData.append('images', image);
+    }
+    this.postsService.createPost(postData).subscribe(
       () => {
-        this.toastr.success('Thêm sản phẩm thành công');
+        this.toastr.success('Thêm Sân bóng thành công');
         this.router.navigate(['/admin/manager-product']);
         this.postForm.reset();
       },

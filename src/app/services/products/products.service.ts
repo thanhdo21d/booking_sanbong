@@ -32,11 +32,14 @@ export class ProductsService {
   }
   getPostsApporved(data: any): Observable<any> {
     return this.http.post<any>(
-      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetData`,{}
+      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetData`,
+      {}
     );
   }
   getPost(id: number | string): Observable<any> {
-    return this.http.get<any>(`https://975a-222-252-24-198.ngrok-free.app/api/Field/GetFees/${id}`);
+    return this.http.get<any>(
+      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetFees/${id}`
+    );
   }
   deleteFakePost(id: number | string) {
     return this.http.put(`${baseURL}/posts/delete-fake/${id}`, {
@@ -45,7 +48,7 @@ export class ProductsService {
   }
   createPost(post: any): Observable<any> {
     // const options = this.getAccessToken();
-    return this.http.post(`${baseURL}/posts`, post);
+    return this.http.post(`https://975a-222-252-24-198.ngrok-free.app/api/Field/Create`, post);
   }
 
   updatePost(post: any, id: string): Observable<any> {
@@ -111,6 +114,13 @@ export class ProductsService {
   ): Observable<{ message: string; posts: IPosts[] }> {
     return this.http.get<{ message: string; posts: IPosts[] }>(
       `${this.baseURL}/posts/filter/price?min=${min}&max=${max}`
+    );
+  }
+  createBookingFb(post: any) {
+    return this.http.post(
+      `https://975a-222-252-24-198.ngrok-free.app/api/Booking/Create
+      `,
+      post
     );
   }
 }

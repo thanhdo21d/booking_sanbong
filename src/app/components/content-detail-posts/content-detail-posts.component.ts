@@ -44,7 +44,7 @@ export class ContentDetailPostsComponent {
     }
 
     this.cartService.addCart(this.userId, id).subscribe(() => {
-      this.Toast.success('Thêm sản phẩm vào giỏ hàng thành công');
+      this.Toast.success('Thêm  thành công');
       this.router.navigate(['/cart']);
     });
   }

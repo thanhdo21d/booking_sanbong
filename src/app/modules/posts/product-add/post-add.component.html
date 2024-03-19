@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row g-5">
     <div class="col-6 text-capitalize">
-      <h2>Thêm sản phảm</h2>
+      <h2>Thêm sân</h2>
     </div>
     <div class="col-6">
       <div class="d-flex justify-content-end align-items-center">
@@ -19,7 +19,7 @@
         <div class="row g-5">
           <div class="col-6">
             <mat-form-field class="form__field">
-              <mat-label>Tiêu đề sản phẩm</mat-label>
+              <mat-label>Tên sân bóng</mat-label>
               <input type="text" matInput formControlName="title" />
             </mat-form-field>
             <div
@@ -30,14 +30,34 @@
               class="text-danger"
             >
               <div *ngIf="postForm.get('title')?.errors?.['required']">
-                Tiêu đề là bắt buộc.
+                Tên sân bóng là bắt buộc.
               </div>
               <div *ngIf="postForm.get('title')?.errors?.['minlength']">
-                Tiêu đề ít nhất 4 kí tự
+                Tên sân bóng ít nhất 4 kí tự
               </div>
             </div>
           </div>
           <div class="col-6">
+            <mat-form-field class="form__field">
+              <mat-label>địa chỉ</mat-label>
+              <input type="text" matInput formControlName="address" />
+            </mat-form-field>
+            <div
+              *ngIf="
+                postForm.get('address')?.invalid &&
+                (postForm.get('address')?.dirty || postForm.get('address')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="postForm.get('address')?.errors?.['required']">
+                Địa chỉ là bắt buộc.
+              </div>
+              <div *ngIf="postForm.get('address')?.errors?.['minlength']">
+                Địa chỉ ít nhất 4 kí tự
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-6">
             <mat-form-field class="form__field">
               <mat-label>Danh mục </mat-label>
               <mat-select formControlName="category">
@@ -60,9 +80,9 @@
                 Danh mục là bắt buộc.
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="col-6">
+          <!-- <div class="col-6">
             <mat-radio-group
               aria-label="Trạng thái bài post"
               formControlName="is_active"
@@ -84,9 +104,9 @@
                 Trạng thái sản phẩm là bắt buộc
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="col-6">
+          <!-- <div class="col-6">
             <mat-form-field class="form__field">
               <mat-label>Duyệt sản phẩm</mat-label>
               <mat-select formControlName="status">
@@ -95,7 +115,7 @@
                 <mat-option value="rejected">Reject</mat-option>
               </mat-select>
             </mat-form-field>
-          </div>
+          </div> -->
           <div class="col-6">
             <mat-form-field class="form__field">
               <mat-label>Giá </mat-label>
@@ -150,6 +170,7 @@
             </div>
           </div>
         </div>
+        <p>Mô tả sản phẩm</p>
         <div class="form-group mb-1">
           <ckeditor
             [editor]="Editor"
