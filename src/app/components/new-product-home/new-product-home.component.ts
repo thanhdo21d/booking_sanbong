@@ -5,7 +5,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 @Component({
   selector: 'pp-new-product-home',
   templateUrl: './new-product-home.component.html',
-  styleUrls: ['./new-product-home.component.scss'],
+  styleUrls: ['../header/header.component.scss'],
 })
 export class NewProductHomePageComponent {
   /* config slider */
@@ -22,7 +22,7 @@ export class NewProductHomePageComponent {
 
   constructor(private postService: ProductsService) {
     this.postService.getPostsApporved('').subscribe((data) => {
-      console.log(data,"dât");
+      console.log(data, 'dât');
       this.posts = data.data;
       this.newPost = this.posts[0];
       // console.log(this.posts);

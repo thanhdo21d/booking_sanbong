@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss'],
+  styleUrls: ['../header/header.component.scss'],
 })
 export class SliderComponent {
   slides = [
