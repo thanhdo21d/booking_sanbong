@@ -52,12 +52,14 @@ export interface IUserInfo {
   updatedAt: string;
   cart: string[];
   buyed: string[];
+  data?:any[];
 }
 
 export interface IOrder {
   inforOrderShipping: IInforOrderShipping;
   _id: string;
   user: IUserInfo;
+  data?:any[];
   items: IOrderItem[];
   status: string;
   total: number;

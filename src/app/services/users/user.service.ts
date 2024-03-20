@@ -113,4 +113,9 @@ export class UserService {
   getCountUser(): Observable<IUserAnalytics[]> {
     return this.http.get<IUserAnalytics[]>(`${this.baseURL}/counter/user-new`);
   }
+  getALlOrderByUser(idUser : string){
+    return this.http.post(`https://975a-222-252-24-198.ngrok-free.app/api/Booking/History`,{
+      userId : idUser,
+    })
+  }
 }

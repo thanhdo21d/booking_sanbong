@@ -42,24 +42,22 @@ export class ProductsDetailPageComponent {
 
       if (this.idPost) {
         /* get all comment by id with socket */
-
-        console.log('Ád');
+        console.log(id);
       }
 
       this.postService.getPost(id!).subscribe(
         (data) => {
-          this.post = data.post;
           console.log(data, 'db');
-          this.cateService
-            .getRelatedPost(data.post.category._id)
-            .subscribe(({ data }) => {
-              this.relatedPosts = data.posts!;
-            });
+          this.post = data.post;
+          // this.cateService
+          //   .getRelatedPost(data.post.category._id)
+          //   .subscribe(({ data }) => {
+          //     this.relatedPosts = data.posts!;
+          //   });
         },
         () => {
           this.toastr.error("Couldn't find this post.Please try again😥😥");
-          // alert("Couldn't find this post.Please try again😥😥");
-          // this.redirect.navigate(['/']);
+
         }
       );
     });

@@ -1,54 +1,51 @@
 <section class="h-100 h-custom">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12">
+  <div class=" py-5 h-100">
+    <div class=" h-100">
+      <div class="">
         <div
-          class="card card-registration card-registration-2"
+          class=""
           style="border-radius: 15px"
         >
-          <div class="card-body p-0">
-            <div class="row g-0">
+          <div class="">
+            <div class="">
               <div
-                [ngClass]="{
-                  'col-lg-8': user && user.cart && user.cart.length > 0,
-                  'col-12': !(user && user.cart && user.cart.length > 0)
-                }"
+
               >
                 <div class="p-5">
                   <div
                     class="d-flex justify-content-between align-items-center mb-5"
                   >
-                    <h1 class="fw-bold mb-0 text-black">Lịch sử trống</h1>
+                    <h1 class="fw-bold mb-0 text-black">Lịch sử</h1>
                     <h6 class="mb-0 text-muted">
                       {{
-                        user.cart && user.cart.length > 0 ? user.cart.length : 0
+                        dataUserBooking && dataUserBooking.length > 0 ? dataUserBooking.length : 0
                       }}
                       bản ghi
                     </h6>
                   </div>
 
                   <hr class="my-4" />
-                  <div *ngIf="user && user.cart">
+                  <div *ngIf="dataUserBooking">
                     <div
-                      *ngFor="let item of user.cart; let i = index"
-                      class="row mb-4 d-flex justify-content-between align-items-center"
+                      *ngFor="let item of dataUserBooking; let i = index"
+                      class=" mb-4 row d-flex justify-content-between align-items-center"
                     >
                       <div class="col-md-2 col-lg-2 col-xl-2">
                         <img
                           src="{{
                             item.images
                               ? item.images[0].url
-                              : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp'
+                              : 'https://img.thegioithethao.vn/thumbs/san-bong-da/ha-noi/nam-tu-liem/garden-city/garden-city-1_thumb_500.webp'
                           }}"
                           class="img-fluid rounded-3"
                           alt="Cotton T-shirt"
                         />
                       </div>
-                      <div class="col-md-3 col-lg-3 col-xl-3">
+                      <div class="col-md-1 col-lg-1 col-xl-1">
                         <!-- <h6 class="text-muted">{{ item.title }}</h6> -->
-                        <h6 class="text-black mb-0">{{ item.title }}</h6>
+                        <h6 class="text-black mb-0">{{ item.field.name }}</h6>
                       </div>
-                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                      <!-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                         <button
                           class="btn btn-link px-2"
                           (click)="handleButtonClick(i, 'decrement')"
@@ -71,20 +68,26 @@
                         >
                           <i class="fas fa-plus"></i>
                         </button>
+                      </div> -->
+                      <div class="col-md-1 col-lg-1 col-xl-1 offset-lg-1">
+                        <h6 class="mb-0">{{ item.price || 0 }} VND</h6>
                       </div>
-                      <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                        <h6 class="mb-0">{{ item.price }} VND</h6>
+                      <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
+                        <h6 class="mb-0">{{ item.start }} </h6>
+                      </div>
+                      <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
+                        <h6 class="mb-0">{{ item.end}} </h6>
                       </div>
                       <div
                         class="col-md-1 col-lg-1 col-xl-1 text-end text-muted"
                         (click)="removeItem(item._id)"
                       >
-                        <i class="fas fa-times"></i>
+                      <i class="fa-solid fa-circle-info"></i>
                       </div>
                     </div>
                   </div>
                   <div
-                    *ngIf="user && !user.cart.length"
+                    *ngIf="!dataUserBooking"
                     class="d-flex justify-content-center align-items-center"
                   >
                     <h5>Lịch sử trống</h5>
@@ -99,8 +102,8 @@
                   </div>
                 </div>
               </div>
-              <div
-                *ngIf="user && user.cart.length > 0"
+              <!-- <div
+                *ngIf="dataUserBooking && dataUserBooking.length >0"
                 class="col-lg-4 bg-grey"
               >
                 <div class="p-4">
@@ -259,7 +262,7 @@
                     </div>
                   </form>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

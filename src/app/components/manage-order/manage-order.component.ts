@@ -27,7 +27,7 @@ export class ManageOrderComponent {
   dataSourceCancel: IOrder[] = [];
 
   theadTable: string[] = ['STT', 'Tên sản phẩm', 'Số lương', 'Trạng thái'];
-  orders: IOrder[] = [];
+  orders: any = [];
   orderDones: IOrder[] = [];
   orderCancel: IOrder[] = [];
   orderPending: IOrder[] = [];
@@ -43,13 +43,14 @@ export class ManageOrderComponent {
   /* get All users */
   getAllOrder() {
     this.orderServer.getAllOrder().subscribe((order) => {
-      this.orders = order;
-      this.orderDones = this.orders.filter((order) => order.status === 'done');
+      console.log(order);
+      this.orders= order.data.items;
+      this.orderDones = this.orders.filter((order : any) => order.status === 'done');
       this.orderCancel = this.orders.filter(
-        (order) => order.status === 'canceled'
+        (order : any) => order.status === 'canceled'
       );
       this.orderPending = this.orders.filter(
-        (order) => order.status === 'pending'
+        (order : any) => order.status === 'pending'
       );
       this.dataSourcePending = this.orderPending;
       this.dataSourceDone = this.orderDones;

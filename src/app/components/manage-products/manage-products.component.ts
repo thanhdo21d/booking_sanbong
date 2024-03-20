@@ -22,16 +22,15 @@ export class ManageProductsComponent {
   titleModal: string = 'Thông tin bài post';
   theadTable: string[] = [
     'STT',
-    'Tên sản phẩm',
-    'Tác giả',
-    'Danh mục',
+    'Ảnh sân',
+    'Tên Sân bóng',
+    'Địa chỉ',
+    'Giá thuê',
     'Trạng thái',
-    'Xét duyệt',
-    'Lượt thích',
     'Action',
   ];
   routerLink = '/admin/post-add';
-  PostsList: IPosts[] = [];
+  PostsList: any = [];
   Post!: IPosts;
   constructor(
     private postsService: ProductsService,
@@ -43,19 +42,19 @@ export class ManageProductsComponent {
 
   getAllPost() {
     this.postsService
-      .getAllPosts(this.paginationObj.currentPage)
+      .getAllPosts()
       .subscribe((postsData) => {
-        // console.log(postsData.posts.docs);
-        this.PostsList = postsData.posts.docs;
-        this.paginationObj.currentPage = postsData.posts.page;
-        this.paginationObj.totalPage = postsData.posts.totalPages;
-        this.paginationObj.totalDocs = postsData.posts.totalDocs;
-        this.paginationObj.limit = postsData.posts.limit;
-        this.paginationObj.hasNextPage = postsData.posts.hasNextPage;
-        this.paginationObj.hasPrevPage = postsData.posts.hasPrevPage;
-        this.paginationObj.totalPagesArray = Array(this.paginationObj.totalPage)
-          .fill(0)
-          .map((_, index) => index + 1);
+        console.log(postsData.data.items,'.posts.docs');
+        this.PostsList = postsData.data.items;
+        // this.paginationObj.currentPage = postsData.posts.page;
+        // this.paginationObj.totalPage = postsData.posts.totalPages;
+        // this.paginationObj.totalDocs = postsData.posts.totalDocs;
+        // this.paginationObj.limit = postsData.posts.limit;
+        // this.paginationObj.hasNextPage = postsData.posts.hasNextPage;
+        // this.paginationObj.hasPrevPage = postsData.posts.hasPrevPage;
+        // this.paginationObj.totalPagesArray = Array(this.paginationObj.totalPage)
+        //   .fill(0)
+        //   .map((_, index) => index + 1);
       });
   }
 

@@ -139,32 +139,62 @@
           </div>
           <div nh-block="cdr93am" nh-block-cache="false" class=""></div>
           <div nh-block="9g2txoj" nh-block-cache="false" class=""></div>
-          <div nh-block="g1syznh" nh-block-cache="true" class="">
+          <ng-container *ngIf="!isLogin">
+          <div  nh-block="g1syznh" nh-block-cache="true" class="">
             <div nh-mini-member="" class="entire-action-header entire-action-header-login"><a
                 class="btn-user btn-action-header" title="Tài khoản" href="javascript:;"><span class="icon"><i class="fa-solid fa-user"></i>></span><span>Tài khoản</span></a>
               <div class="content">
-                <div class="btn-login"><a title="Tài khoản" href="javascript:;" data-toggle="modal"
+                <div class="btn-login"><a title="Tài khoản" routerLink="/login"  href="javascript:;" data-toggle="modal"
                     data-target="#login-modal">Đăng nhập</a></div>
-                <div class="btn-register"><a href="/member/register">Đăng ký tài khoản</a></div>
-                <ul>
-                  <li><a href="/member/profile"><i class="iconsax isax-profile-circle"></i><span>Thông tin cá
+                <div class="btn-register"><a routerLink="/signup" href="/member/register">Đăng ký tài khoản</a></div>
+                <!-- <ul>
+                  <li><a routerLink="/user-info/{{ userInfo.id }}" ><i class="fa-regular fa-user"></i><span>Thông tin cá
                         nhân</span></a></li>
-                  <li><a href="/member/order"><i class="iconsax isax-bag-2"></i><span>Đơn hàng</span></a></li>
+                  <li><a href="/cart"><i class="fa-solid fa-cart-shopping"></i><span>Đơn hàng</span></a></li>
                   <li><a href="/member/order"><i class="iconsax isax-heart-circle"></i><span>Sản phẩm yêu
                         thích</span></a></li>
                   <li><a href="/member/playground/wishlist"><i class="iconsax isax-document-favorite"></i><span>Sân yêu
                         thích</span></a></li>
                   <li><a href="/member/sports-playground"><i class="iconsax isax-money-2"></i><span>Sân thể
                         thao</span></a></li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           </div>
-          <div nh-block="i57yxn3" nh-block-cache="true" class="float-right">
+        </ng-container>
+        <ng-container *ngIf="isLogin">
+          <div  nh-block="g1syznh" nh-block-cache="true" class="">
+            <div nh-mini-member="" class="entire-action-header entire-action-header-login"><a
+                class="btn-user btn-action-header" title="Tài khoản" href="javascript:;"><span class="icon"><i class="fa-solid fa-user"></i>></span><span>Tài khoản</span></a>
+                <div class="content">
+                  <ul>
+                    <li><a routerLink="/user-info/{{ userInfo.id }}" ><i class="fa-regular fa-user"></i><span>Thông tin cá
+                          nhân</span></a></li>
+                    <li><a href="/cart"><i class="fa-solid fa-cart-shopping"></i><span>Đơn hàng</span></a></li>
+                    <!-- <li><a href="/member/order"><i class="iconsax isax-heart-circle"></i><span>Sản phẩm yêu
+                          thích</span></a></li>
+                    <li><a href="/member/playground/wishlist"><i class="iconsax isax-document-favorite"></i><span>Sân yêu
+                          thích</span></a></li>
+                    <li><a href="/member/sports-playground"><i class="iconsax isax-money-2"></i><span>Sân thể
+                          thao</span></a></li> -->
+                          <li>
+                            <a class="dropdown-item" routerLink="/" (click)="handleLogout()"
+                              >Đăng xuất</a
+                            >
+                          </li>
+                  </ul>
+                </div>
+
+
+            </div>
+          </div>
+        </ng-container>
+
+          <div nh-block="i57yxn3" nh-block-cache="true" class="float-right mr-3">
             <div class="entire-action-header"><a class="btn-mini-cart btn-action-header" nh-mini-cart="open"
                 title="Giỏ hàng" href="javascript:;">
-                <div class="icon"><i class="iconsax isax-shopping-cart5"></i></div><span nh-total-quantity-mini-cart=""
-                  class="items-number">0</span><span>Lịch sử</span>
+                <div routerLink="/cart" class="icon"><i class="iconsax isax-shopping-cart5"></i></div><span nh-total-quantity-mini-cart=""
+                  class="items-number">0</span><span >Lịch sử</span>
               </a></div>
           </div>
         </div>
@@ -183,20 +213,20 @@
                 <div class="menu-top"><a href="javascript:;" nh-menu="btn-close"
                     class="close-sidebar effect-rotate icon-close"><i class="iconsax isax-add"></i></a></div>
                 <ul>
-                  <li class=""><a href="/bong-da">Bóng đá<span class="iconsax isax-arrow-down-1"></span></a></li>
-                  <li class=""><a href="/cau-long">Cầu lông<span class="iconsax isax-arrow-down-1"></span></a></li>
-                  <li class=""><a href="/bong-ban">Bóng bàn<span class="iconsax isax-arrow-down-1"></span></a></li>
-                  <li class=""><a href="/bong-ro">Bóng rổ<span class="iconsax isax-arrow-down-1"></span></a></li>
-                  <li class=""><a href="/tennis">Tennis<span class="iconsax isax-arrow-down-1"></span></a></li>
-                  <li class=""><a href="/bong-chuyen">Bóng chuyền<span class="iconsax isax-arrow-down-1"></span></a>
+                  <li class=""><a routerLink="/blog" >Bóng đá<span class="iconsax isax-arrow-down-1"></span></a></li>
+                  <li class=""><a routerLink="/blog" >Cầu lông<span class="iconsax isax-arrow-down-1"></span></a></li>
+                  <li class=""><a routerLink="/blog" >Bóng bàn<span class="iconsax isax-arrow-down-1"></span></a></li>
+                  <li class=""><a routerLink="/blog" >Bóng rổ<span class="iconsax isax-arrow-down-1"></span></a></li>
+                  <li class=""><a routerLink="/blog" >Tennis<span class="iconsax isax-arrow-down-1"></span></a></li>
+                  <li class=""><a routerLink="/blog" >Bóng chuyền<span class="iconsax isax-arrow-down-1"></span></a>
                   </li>
-                  <li class=""><a href="/golf">Golf<span class="iconsax isax-arrow-down-1"></span></a></li>
-                  <li class=""><a href="/gym">Gym<span class="iconsax isax-arrow-down-1"></span></a></li>
-                  <li class=""><a href="/vo-thuat">Võ thuật<span class="iconsax isax-arrow-down-1"></span></a></li>
-                  <li class=""><a href="/thiet-bi-day-hoc">Thiết bị dạy học<span
+                  <li class=""><a routerLink="/blog" >Golf<span class="iconsax isax-arrow-down-1"></span></a></li>
+                  <li class=""><a routerLink="/blog" >Gym<span class="iconsax isax-arrow-down-1"></span></a></li>
+                  <li class=""><a routerLink="/blog" >Võ thuật<span class="iconsax isax-arrow-down-1"></span></a></li>
+                  <li class=""><a routerLink="/blog" >Thiết bị dạy học<span
                         class="iconsax isax-arrow-down-1"></span></a></li>
 
-                  <li class="sale"><img src="https://img.thegioithethao.vn/media/icon/icon-sale.svg" alt="Sale"
+                  <li class="sale d-flex align-items-center  gap-2"><img src="https://img.thegioithethao.vn/media/icon/icon-sale.svg" alt="Sale"
                       class="marker-image"><a href="/"><span class="icon"><img
                           src="https://img.thegioithethao.vn/media/icon/icon-sale.svg" alt="Sale"
                           class="marker-image"></span>Sale<span class="iconsax isax-arrow-down-1"></span></a></li>

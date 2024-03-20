@@ -48,6 +48,13 @@ export class HeaderComponent {
       showCancelButton: true,
       confirmButtonText: 'Đúng!',
       cancelButtonText: 'Không',
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger',
+        container: 'swal-container', // Tạo một lớp CSS tùy chỉnh cho container của cảnh báo
+        popup: 'swal-popup', // Tạo một lớp CSS tùy chỉnh cho popup của cảnh báo
+      },
+      background: '#fff',
     }).then((result) => {
       if (result.value) {
         this.auth.logOut();

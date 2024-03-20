@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IOrder } from 'src/app/interfaces/order.interface';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -14,9 +14,24 @@ export class OrderService {
   constructor(private http: HttpClient, private router: Router) {
     this.baseURL = `http://localhost:8080/api/`;
   }
+  getAccessToken() {
+    const accessToken = JSON.parse(localStorage.getItem('accessToken') || '');
 
-  getAllOrder(): Observable<IOrder[]> {
-    return this.http.get<IOrder[]>(`${this.baseURL}getall-order`);
+    if (!accessToken || accessToken === '') {
+      this.router.navigate(['/login-admin']);
+    }
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${accessToken}`,
+    });
+    const options = { headers: headers };
+    return options;
+  }
+  getAllOrder(): Observable<any> {
+    return this.http.post<any>(
+      `https://975a-222-252-24-198.ngrok-free.app/api/Booking/History`,
+      {
+      }
+    );
   }
   getIdOrder(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseURL}getId-order/${id}`);

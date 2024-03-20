@@ -27,8 +27,11 @@ export class ProductsService {
     const options = { headers: headers };
     return options;
   }
-  getAllPosts(page: number | string = 1): Observable<IDocPosts> {
-    return this.http.get<IDocPosts>(`${baseURL}/posts?_page=${page}`);
+  getAllPosts(): Observable<any> {
+    return this.http.post<any>(
+      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetData`,
+      {}
+    );
   }
   getPostsApporved(data: any): Observable<any> {
     return this.http.post<any>(
@@ -38,7 +41,7 @@ export class ProductsService {
   }
   getPost(id: number | string): Observable<any> {
     return this.http.get<any>(
-      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetFees/${id}`
+      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetField/${id}`
     );
   }
   deleteFakePost(id: number | string) {
@@ -57,9 +60,10 @@ export class ProductsService {
   }
 
   /* get post by id */
-  getPostById(id: string): Observable<{ message: string; post: IPosts }> {
-    return this.http.get<{ message: string; post: IPosts }>(
-      `${this.baseURL}/posts/${id}`
+  getPostById(id: string): Observable<any> {
+    return this.http.get<any>(
+      // `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetField/${id}`
+      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetField/197bdd2e-823b-47b5-e895-08dc4308236a`
     );
   }
 

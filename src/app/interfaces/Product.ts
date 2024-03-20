@@ -11,6 +11,7 @@ export interface IPosts {
   _id: string;
   title: string;
   name?: string;
+  address?: string;
   staffId?: string;
   description?: string;
   author: IUser;

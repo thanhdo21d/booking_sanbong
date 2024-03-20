@@ -28,7 +28,7 @@
             </tr>
           </thead>
           <!-- users -->
-          <tbody *ngIf="dataTbody">
+          <!-- <tbody *ngIf="dataTbody">
             <tr
               *ngFor="let user of dataTbody; let i = index"
               class="text-center"
@@ -78,7 +78,7 @@
                     <i class="fa-solid fa-eye"></i
                   ></a>
                 </button> -->
-                <a routerLink="/admin/edit-user/{{ user._id }}">
+                <!-- <a routerLink="/admin/edit-user/{{ user._id }}">
                   <button class="settings text-primary">
                     <i class="fa-solid fa-pen-to-square"></i>
                   </button>
@@ -91,9 +91,9 @@
                 </button>
               </td>
             </tr>
-          </tbody>
+          </tbody>  -->
           <!-- categories -->
-          <tbody *ngIf="categories.length > 0">
+          <!-- <tbody *ngIf="categories.length > 0">
             <tr
               *ngFor="let category of categories; let i = index"
               class="text-center"
@@ -115,7 +115,7 @@
                 </button>
               </td>
             </tr>
-          </tbody>
+          </tbody> -->
           <!-- Posts -->
 
           <tbody *ngIf="posts.length > 0">
@@ -128,21 +128,21 @@
                 <div class="post__image-group">
                   <div class="post__image-wrapper">
                     <img
-                      [src]="post.images[0].url"
+                      src="https://img.thegioithethao.vn/thumbs/san-bong-da/ha-noi/nam-tu-liem/garden-city/garden-city-1_thumb_500.webp"
                       alt=""
                       class="mb-1 post__image"
                     />
                   </div>
-                  {{ post.title }}
+
                 </div>
               </td>
               <td>
-                {{ post?.author?.username || "Người dùng không tồn tại" }}
+                {{ post.name }}
               </td>
-              <td>{{ post.category.name }}</td>
-              <!-- <td>
-                {{ post?.author?.username || "Người dùng không tồn tại" }}
-              </td> -->
+              <td>{{ post.address }}</td>
+              <td>
+                {{ post?.price?.toLocaleString() || 0 }} VND
+                </td>
 
               <td>
                 <span
@@ -154,22 +154,11 @@
                 </span>
               </td>
               <td>
-                <!-- <span *ngFor="let tag of post.tags">{{ tag }}</span> -->
-                <span
-                  class="text-light p-1 rounded
-                  {{ post.status === 'pending' ? 'bg-warning' : 'bg-primary' }}
-                  {{ post.status === 'rejected' ? 'bg-dark text-white' : '' }}"
-                >
-                  {{ post.status }}
-                </span>
-              </td>
-              <td>{{ post.likes.toLocaleString() }}</td>
-              <td>
                 <!-- <button class="text-warning" (click)="getPostById(post._id!)" data-toggle="modal"
                   data-target="#exampleModal"> -->
                 <button
                   class="text-23BB86"
-                  (click)="getPostById(post._id!)"
+                  (click)="getPostById(post.id!)"
                   data-toggle="modal"
                   data-target="#exampleModal"
                 >
@@ -345,7 +334,7 @@
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Thông tin bài viết</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Thông tin sân bóng</h5>
         <button
           type="button"
           class="close"

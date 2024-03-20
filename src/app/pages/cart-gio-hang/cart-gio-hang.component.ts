@@ -15,7 +15,6 @@ import { UserService } from 'src/app/services/users/user.service';
 })
 export class CartGioHangComponent {
   user!: IUserRequest;
-
   listUserPosts!: IPosts[];
   cartData!: any[];
   totalCart!: number;
@@ -30,6 +29,8 @@ export class CartGioHangComponent {
     phone: ['', [Validators.required]],
   });
   quantityValues: number[] = [];
+  dataUserBooking : any[]=[];
+
   constructor(
     private cartService: CartService,
     private Toast: ToastrService,
@@ -40,8 +41,14 @@ export class CartGioHangComponent {
   ) {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     this.handleCart();
+    this.handelGetAllBookingByUser()
   }
-
+  handelGetAllBookingByUser(){
+    this.userService.getALlOrderByUser(this.user.id!).subscribe((data : any)=>{
+      console.log(data.data,"data user get");
+      this.dataUserBooking = data.data.items
+    })
+}
   handleCart() {
     this.userService.getUser(this.user._id!).subscribe(({ user }) => {
       this.user = user;

@@ -69521,3 +69521,13 @@ a.btn-404:hover {
 .swiper-slide.swiper-slide-visible .product-item .product-title {
   height: 46px
 }
+/* Tạo lớp CSS tùy chỉnh cho container của cảnh báo */
+.swal-container {
+  background-color: #ffffff; /* Màu nền trắng */
+}
+
+/* Tạo lớp CSS tùy chỉnh cho popup của cảnh báo */
+.swal-popup {
+  border-radius: 10px; /* Bo góc popup */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng popup */
+}

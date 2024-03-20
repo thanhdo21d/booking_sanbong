@@ -25,7 +25,7 @@ export class LayoutManagerComponent {
   @Input() dataTbody: IUser[] = [];
   @Input() categories: ICategory[] = [];
   @Input() tags: ITag[] = [];
-  @Input() posts: IPosts[] = [];
+  @Input() posts: any[] = [];
   @Input() comments: IResCountComment[] = [];
   @Input() viewComments: IResViewComment[] = [];
   @Input() handleAddNewUser: any;
@@ -46,7 +46,9 @@ export class LayoutManagerComponent {
     autoplaySpeed: 5000,
   };
   postInfo!: IPosts;
-  constructor(private postsService: ProductsService) {}
+  constructor(private postsService: ProductsService) {
+    console.log(this.posts);
+  }
 
   /* handle edit */
   handleEdit(items: any) {
@@ -85,8 +87,10 @@ export class LayoutManagerComponent {
 
   /* get post by id */
   getPostById(id: string): void {
+    console.log(id)
     if (!id) return;
     this.postsService.getPostById(id).subscribe((post) => {
+      console.log(post,'post');
       this.postInfo = post.post;
     });
   }
