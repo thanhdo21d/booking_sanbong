@@ -18,9 +18,12 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   /* login */
   loginUser(userInfo: ILogin): Observable<IUserResponse> {
-    return this.http.post<IUserResponse>(`https://975a-222-252-24-198.ngrok-free.app/api/Account/login`, userInfo);
+    return this.http.post<IUserResponse>(
+      `https://db83-222-252-24-198.ngrok-free.app/api/Account/login`,
+      userInfo
+    );
   }
-//https://975a-222-252-24-198.ngrok-free.app/api/Account/login
+  //https://db83-222-252-24-198.ngrok-free.app/api/Account/login
 
   // registerUser(user: IUser): Observable<IUserResponse> {
   //   return this.http.post<IUserResponse>(`${baseURL}/sign-up`, user);
@@ -49,7 +52,9 @@ export class AuthService {
   }
   /* signup */
   signUpUser(userInfo: IUserRegister): Observable<IUserResponse> {
-
-    return this.http.post<IUserResponse>(`https://975a-222-252-24-198.ngrok-free.app/api/Account/Register`, userInfo);
+    return this.http.post<IUserResponse>(
+      `https://db83-222-252-24-198.ngrok-free.app/api/Account/Register`,
+      userInfo
+    );
   }
 }

@@ -50,25 +50,25 @@ export class UserService {
   /* create */
   createStaff(user: IUserRequest) {
     return this.http.post(
-      'https://975a-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
+      'https://db83-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
       user
     );
   }
   createUser(user: IUserRequest) {
     return this.http.post(
-      'https://975a-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
+      'https://db83-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
       user
     );
   }
   createManager(user: IUserRequest) {
     return this.http.post(
-      'https://975a-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
+      'https://db83-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
       user
     );
   }
   createOwner(user: IUserRequest) {
     return this.http.post(
-      'https://975a-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
+      'https://db83-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
       user
     );
   }
@@ -113,9 +113,12 @@ export class UserService {
   getCountUser(): Observable<IUserAnalytics[]> {
     return this.http.get<IUserAnalytics[]>(`${this.baseURL}/counter/user-new`);
   }
-  getALlOrderByUser(idUser : string){
-    return this.http.post(`https://975a-222-252-24-198.ngrok-free.app/api/Booking/History`,{
-      userId : idUser,
-    })
+  getALlOrderByUser(idUser: string) {
+    return this.http.post(
+      `https://db83-222-252-24-198.ngrok-free.app/api/Booking/History`,
+      {
+        userId: idUser,
+      }
+    );
   }
 }

@@ -28,9 +28,8 @@ export class OrderService {
   }
   getAllOrder(): Observable<any> {
     return this.http.post<any>(
-      `https://975a-222-252-24-198.ngrok-free.app/api/Booking/History`,
-      {
-      }
+      `https://db83-222-252-24-198.ngrok-free.app/api/Booking/History`,
+      {}
     );
   }
   getIdOrder(id: string): Observable<any> {

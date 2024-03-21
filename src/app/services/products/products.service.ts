@@ -29,19 +29,19 @@ export class ProductsService {
   }
   getAllPosts(): Observable<any> {
     return this.http.post<any>(
-      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetData`,
+      `https://db83-222-252-24-198.ngrok-free.app/api/Field/GetData`,
       {}
     );
   }
   getPostsApporved(data: any): Observable<any> {
     return this.http.post<any>(
-      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetData`,
+      `https://db83-222-252-24-198.ngrok-free.app/api/Field/GetData`,
       {}
     );
   }
   getPost(id: number | string): Observable<any> {
     return this.http.get<any>(
-      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetField/${id}`
+      `https://db83-222-252-24-198.ngrok-free.app/api/Field/GetField/${id}`
     );
   }
   deleteFakePost(id: number | string) {
@@ -51,7 +51,10 @@ export class ProductsService {
   }
   createPost(post: any): Observable<any> {
     // const options = this.getAccessToken();
-    return this.http.post(`https://975a-222-252-24-198.ngrok-free.app/api/Field/Create`, post);
+    return this.http.post(
+      `https://db83-222-252-24-198.ngrok-free.app/api/Field/Create`,
+      post
+    );
   }
 
   updatePost(post: any, id: string): Observable<any> {
@@ -62,8 +65,8 @@ export class ProductsService {
   /* get post by id */
   getPostById(id: string): Observable<any> {
     return this.http.get<any>(
-      // `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetField/${id}`
-      `https://975a-222-252-24-198.ngrok-free.app/api/Field/GetField/197bdd2e-823b-47b5-e895-08dc4308236a`
+      // `https://db83-222-252-24-198.ngrok-free.app/api/Field/GetField/${id}`
+      `https://db83-222-252-24-198.ngrok-free.app/api/Field/GetField/197bdd2e-823b-47b5-e895-08dc4308236a`
     );
   }
 
@@ -122,7 +125,7 @@ export class ProductsService {
   }
   createBookingFb(post: any) {
     return this.http.post(
-      `https://975a-222-252-24-198.ngrok-free.app/api/Booking/Create
+      `https://db83-222-252-24-198.ngrok-free.app/api/Booking/Create
       `,
       post
     );
