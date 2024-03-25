@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef } from '@angular/core';
 
 import { IPosts } from 'src/app/interfaces/Product';
 import { ProductsService } from 'src/app/services/products/products.service';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-feature',
@@ -10,6 +11,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 })
 export class FeatureComponent {
   featureLists: IPosts[] = [];
+  urlImage: string = environment.API_URL + '/root/';
   slideConfig = {
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -22,8 +24,8 @@ export class FeatureComponent {
   /* get all posts */
   getAllPosts() {
     this.postsService.getPostsApporved('').subscribe((res) => {
-      console.log(res.data.items,'fwqd');
-      this.featureLists = res.data.items.slice(0,5);
+      console.log(res.data.items, 'fwqd');
+      this.featureLists = res.data.items.slice(0, 5);
     });
   }
   handleFomatDate(dateString: string) {

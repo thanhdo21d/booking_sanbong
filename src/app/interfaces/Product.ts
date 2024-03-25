@@ -21,13 +21,14 @@ export interface IPosts {
   likes: number | string;
   tags: any[];
   category: ICategory;
+  picture?: string;
   comments: any[];
   is_active: boolean;
   status: string;
   deleted: boolean;
   createdAt: string;
   updatedAt: string;
-  price : string
+  price: string;
 }
 
 export interface IDocPosts {

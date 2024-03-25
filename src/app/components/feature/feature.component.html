@@ -63,7 +63,8 @@
                   <div class="ratio-3-2">
                     <img nh-lazy="image"
                         class="img-fluid" alt="Sân bóng KAKA Sport khu đô thị Hòa Quý - Đà Nẵng"
-                        src="https://img.thegioithethao.vn/thumbs/san-bong-da/da-nang/ngu-hanh-son/san-hoa-quy/san-bong-hoa-quy-8_thumb_500.webp"
+                                [src]="urlImage + featureItem.picture"
+
                         style="" />
                   </div>
                 </div>
@@ -97,12 +98,11 @@
                     <span class="price-amount"></span>
                   </div>
                   <div class="playground-time">
-                    <span class="title">Sân trống</span>
+                    <span class="title">Giá</span>
                     <div class="inner-time">
                       <div class="list-time">
-                        <div class="time">15:00</div>
-                        <div class="time">17:30</div>
-                        <div class="time">19:00</div>
+                        <div class="time">{{featureItem.price}}</div>
+
                       </div>
                     </div>
                   </div>

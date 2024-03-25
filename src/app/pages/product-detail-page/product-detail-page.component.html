@@ -450,6 +450,7 @@
                             value=""
                             placeholder="Email (nếu có)..."
                             id="email_buy_fast"
+                            [defaultValue]="mailUser"
                             name="email_buy_fast"
                             class="input-text"
                           />
@@ -693,20 +694,17 @@
               <div class="gr-box" id="box-soccer-8">
                 <div class="wr_products_soccer_related">
                   <h2 class="title-box title-box-mg">Sân gần đây</h2>
-                  <div class="product_grid content-box">
-                    <div class="item">
+                  <div *ngFor="let newResult of getField" class="product_grid content-box">
+
+                    <div [routerLink]="['/posts', newResult.id]" style="cursor: pointer;" class="item">
                       <figure class="product_image">
                         <a
-                          href="https://datsantructuyen.vn/san-bong-da/san-bong-tan-mai-hoang-mai-p432.html"
                           title="Sân bóng Tân Mai - Hoàng Mai"
                         >
                           <img
                             class="lazy after-lazy"
                             alt="Sân bóng Tân Mai - Hoàng Mai"
-                            src="https://datsantructuyen.vn/images/products/2022/08/24/resized/san-bong-tan-mai2-jpg_1661351716.jpg"
-                            srcset="
-                              https://datsantructuyen.vn/images/products/2022/08/24/resized/san-bong-tan-mai2-jpg_1661351716.jpg.webp
-                            "
+                                [src]="urlImage + newResult.picture"
                             style="opacity: 1; display: none"
                           />
                         </a>
@@ -714,11 +712,11 @@
                       <div class="product_info">
                         <div>
                           <a
-                            href="https://datsantructuyen.vn/san-bong-da/san-bong-tan-mai-hoang-mai-p432.html"
+                            [routerLink]="['/posts', newResult.id]"
                             title="Sân bóng Tân Mai - Hoàng Mai"
                             class="name"
                           >
-                            Sân bóng Tân Mai - Hoàng Mai
+                            {{newResult.name}}
                           </a>
                         </div>
 
@@ -828,8 +826,7 @@
 
                         <div class="price_arae cls">
                           <div class="price_txt">Giá</div>
-                          <div class="price_min">400.000₫</div>
-                          <div class="price_max">- 800.000₫</div>
+                       <div>                            {{newResult.price}}</div>
                           <div class="unit">/ Trận</div>
                         </div>
 
@@ -850,318 +847,7 @@
                       </div>
                       <div class="clear"></div>
                     </div>
-                    <div class="item">
-                      <figure class="product_image">
-                        <a
-                          href="https://datsantructuyen.vn/san-bong-da/san-bong-quan-doi-hoang-mai-p396.html"
-                          title="Sân bóng quân đội Hoàng Mai"
-                        >
-                          <img
-                            class="lazy after-lazy"
-                            alt="Sân bóng quân đội Hoàng Mai"
-                            src="https://datsantructuyen.vn/images/products/2022/08/24/resized/san-bong-quan-doi-hoang-mai3_1661351485.jpg"
-                            srcset="
-                              https://datsantructuyen.vn/images/products/2022/08/24/resized/san-bong-quan-doi-hoang-mai3_1661351485.jpg.webp
-                            "
-                            style="opacity: 1; display: none"
-                          />
-                        </a>
-                      </figure>
-                      <div class="product_info">
-                        <div>
-                          <a
-                            href="https://datsantructuyen.vn/san-bong-da/san-bong-quan-doi-hoang-mai-p396.html"
-                            title="Sân bóng quân đội Hoàng Mai"
-                            class="name"
-                          >
-                            Sân bóng quân đội Hoàng Mai
-                          </a>
-                        </div>
 
-                        <div class="people_rate cls">
-                          <div class="people_item">
-                            Điểm nhấn: Cụm 2 sân bóng đá|
-                          </div>
-
-                          <div class="rate-item">
-                            <span class="star-on star">
-                              <svg
-                                width="20px"
-                                height="20px"
-                                aria-hidden="true"
-                                data-prefix="fas"
-                                data-icon="star"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                class="svg-inline--fa fa-star fa-w-18"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
-                                  class=""
-                                ></path>
-                              </svg>
-                            </span>
-                            <span class="star-on star">
-                              <svg
-                                width="20px"
-                                height="20px"
-                                aria-hidden="true"
-                                data-prefix="fas"
-                                data-icon="star"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                class="svg-inline--fa fa-star fa-w-18"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
-                                  class=""
-                                ></path>
-                              </svg>
-                            </span>
-                            <span class="star-on star">
-                              <svg
-                                width="20px"
-                                height="20px"
-                                aria-hidden="true"
-                                data-prefix="far"
-                                data-icon="star"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                class="svg-inline--fa fa-star fa-w-18"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"
-                                  class=""
-                                ></path>
-                              </svg>
-                            </span>
-                            <span class="star-on star">
-                              <svg
-                                width="20px"
-                                height="20px"
-                                aria-hidden="true"
-                                data-prefix="far"
-                                data-icon="star"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                class="svg-inline--fa fa-star fa-w-18"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"
-                                  class=""
-                                ></path>
-                              </svg>
-                            </span>
-                            <span class="star-on star">
-                              <svg
-                                width="20px"
-                                height="20px"
-                                aria-hidden="true"
-                                data-prefix="far"
-                                data-icon="star"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                class="svg-inline--fa fa-star fa-w-18"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"
-                                  class=""
-                                ></path>
-                              </svg>
-                            </span>
-                          </div>
-                        </div>
-
-                        <div class="price_arae cls">
-                          <div class="price_txt">Giá</div>
-                          <div class="price_min">400.000₫</div>
-                          <div class="price_max">- 800.000₫</div>
-                          <div class="unit">/ Trận</div>
-                        </div>
-
-                        <div class="distance hide">
-                          <svg
-                            x="0px"
-                            y="0px"
-                            viewBox="0 0 54.757 54.757"
-                            style="enable-background: new 0 0 54.757 54.757"
-                            xml:space="preserve"
-                          >
-                            <path
-                              d="M40.94,5.617C37.318,1.995,32.502,0,27.38,0c-5.123,0-9.938,1.995-13.56,5.617c-6.703,6.702-7.536,19.312-1.804,26.952  L27.38,54.757L42.721,32.6C48.476,24.929,47.643,12.319,40.94,5.617z M27.557,26c-3.859,0-7-3.141-7-7s3.141-7,7-7s7,3.141,7,7  S31.416,26,27.557,26z"
-                            ></path>
-                            <g></g></svg
-                          >Cách 1,4 km
-                        </div>
-                      </div>
-                      <div class="clear"></div>
-                    </div>
-                    <div class="item">
-                      <figure class="product_image">
-                        <a
-                          href="https://datsantructuyen.vn/san-bong-da/san-bong-minh-kiet-nguyen-an-ninh-p398.html"
-                          title="Sân Bóng Minh Kiệt ( Nguyễn An Ninh)"
-                        >
-                          <img
-                            class="lazy after-lazy"
-                            alt="Sân Bóng Minh Kiệt ( Nguyễn An Ninh)"
-                            src="https://datsantructuyen.vn/images/products/2022/08/24/resized/san-bong-nguyen-an-ninh-img1_1661351417.jpg"
-                            srcset="
-                              https://datsantructuyen.vn/images/products/2022/08/24/resized/san-bong-nguyen-an-ninh-img1_1661351417.jpg.webp
-                            "
-                            style="opacity: 1; display: none"
-                          />
-                        </a>
-                      </figure>
-                      <div class="product_info">
-                        <div>
-                          <a
-                            href="https://datsantructuyen.vn/san-bong-da/san-bong-minh-kiet-nguyen-an-ninh-p398.html"
-                            title="Sân Bóng Minh Kiệt ( Nguyễn An Ninh)"
-                            class="name"
-                          >
-                            Sân Bóng Minh Kiệt ( Nguyễn An Ninh)
-                          </a>
-                        </div>
-
-                        <div class="people_rate cls">
-                          <div class="people_item">
-                            Điểm nhấn: Cụm 4 sân bóng
-                          </div>
-
-                          <div class="rate-item">
-                            <span class="star-on star">
-                              <svg
-                                width="20px"
-                                height="20px"
-                                aria-hidden="true"
-                                data-prefix="fas"
-                                data-icon="star"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                class="svg-inline--fa fa-star fa-w-18"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
-                                  class=""
-                                ></path>
-                              </svg>
-                            </span>
-                            <span class="star-on star">
-                              <svg
-                                width="20px"
-                                height="20px"
-                                aria-hidden="true"
-                                data-prefix="fas"
-                                data-icon="star"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                class="svg-inline--fa fa-star fa-w-18"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
-                                  class=""
-                                ></path>
-                              </svg>
-                            </span>
-                            <span class="star-on star">
-                              <svg
-                                width="20px"
-                                height="20px"
-                                aria-hidden="true"
-                                data-prefix="fas"
-                                data-icon="star"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                class="svg-inline--fa fa-star fa-w-18"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
-                                  class=""
-                                ></path>
-                              </svg>
-                            </span>
-                            <span class="star-on star">
-                              <svg
-                                width="20px"
-                                height="20px"
-                                aria-hidden="true"
-                                data-prefix="far"
-                                data-icon="star"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                class="svg-inline--fa fa-star fa-w-18"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"
-                                  class=""
-                                ></path>
-                              </svg>
-                            </span>
-                            <span class="star-on star">
-                              <svg
-                                width="20px"
-                                height="20px"
-                                aria-hidden="true"
-                                data-prefix="far"
-                                data-icon="star"
-                                role="img"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 576 512"
-                                class="svg-inline--fa fa-star fa-w-18"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"
-                                  class=""
-                                ></path>
-                              </svg>
-                            </span>
-                          </div>
-                        </div>
-
-                        <div class="price_arae cls">
-                          <div class="price_txt">Giá</div>
-                          <div class="price_min">400.000₫</div>
-                          <div class="price_max">- 1.000.000₫</div>
-                          <div class="unit">/ Trận</div>
-                        </div>
-
-                        <div class="distance hide">
-                          <svg
-                            x="0px"
-                            y="0px"
-                            viewBox="0 0 54.757 54.757"
-                            style="enable-background: new 0 0 54.757 54.757"
-                            xml:space="preserve"
-                          >
-                            <path
-                              d="M40.94,5.617C37.318,1.995,32.502,0,27.38,0c-5.123,0-9.938,1.995-13.56,5.617c-6.703,6.702-7.536,19.312-1.804,26.952  L27.38,54.757L42.721,32.6C48.476,24.929,47.643,12.319,40.94,5.617z M27.557,26c-3.859,0-7-3.141-7-7s3.141-7,7-7s7,3.141,7,7  S31.416,26,27.557,26z"
-                            ></path>
-                            <g></g></svg
-                          >Cách 1,4 km
-                        </div>
-                      </div>
-                      <div class="clear"></div>
-                    </div>
                   </div>
                 </div>
               </div>

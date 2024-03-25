@@ -41,21 +41,19 @@ export class ManageProductsComponent {
   }
 
   getAllPost() {
-    this.postsService
-      .getAllPosts()
-      .subscribe((postsData) => {
-        console.log(postsData.data.items,'.posts.docs');
-        this.PostsList = postsData.data.items;
-        // this.paginationObj.currentPage = postsData.posts.page;
-        // this.paginationObj.totalPage = postsData.posts.totalPages;
-        // this.paginationObj.totalDocs = postsData.posts.totalDocs;
-        // this.paginationObj.limit = postsData.posts.limit;
-        // this.paginationObj.hasNextPage = postsData.posts.hasNextPage;
-        // this.paginationObj.hasPrevPage = postsData.posts.hasPrevPage;
-        // this.paginationObj.totalPagesArray = Array(this.paginationObj.totalPage)
-        //   .fill(0)
-        //   .map((_, index) => index + 1);
-      });
+    this.postsService.getAllPosts().subscribe((postsData) => {
+      console.log(postsData.data.items, '.posts.docs');
+      this.PostsList = postsData.data.items;
+      // this.paginationObj.currentPage = postsData.posts.page;
+      // this.paginationObj.totalPage = postsData.posts.totalPages;
+      // this.paginationObj.totalDocs = postsData.posts.totalDocs;
+      // this.paginationObj.limit = postsData.posts.limit;
+      // this.paginationObj.hasNextPage = postsData.posts.hasNextPage;
+      // this.paginationObj.hasPrevPage = postsData.posts.hasPrevPage;
+      // this.paginationObj.totalPagesArray = Array(this.paginationObj.totalPage)
+      //   .fill(0)
+      //   .map((_, index) => index + 1);
+    });
   }
 
   // get post by id

@@ -8,6 +8,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, Validators } from '@angular/forms';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-product-detail-page',
@@ -15,10 +16,14 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./product-detail-page.component.scss'],
 })
 export class ProductsDetailPageComponent {
+  mailUser!: string | null;
   post!: IPosts;
   relatedPosts!: IPosts[];
   comments!: IResViewComment[];
+  urlImage: string = environment.API_URL + '/root/';
+
   idPost!: string;
+  getField!: any;
   bookingForm = this.builder.group({
     fieldId: ['', Validators.required],
     start: ['', Validators.required],
@@ -57,10 +62,14 @@ export class ProductsDetailPageComponent {
         },
         () => {
           this.toastr.error("Couldn't find this post.Please try again😥😥");
-
         }
       );
     });
+
+    const newMailUSer: any = localStorage.getItem('user');
+    var nextResult = JSON.parse(newMailUSer);
+    this.mailUser = nextResult.email;
+    this.handelGetgetField();
   }
   handleSubmitFormBooking() {
     if (this.bookingForm.value.start && this.bookingForm.value.end) {
@@ -79,5 +88,20 @@ export class ProductsDetailPageComponent {
     } else {
       this.toastr.error('Các trường start và end không được để trống');
     }
+  }
+  handelGetgetField() {
+    this.postService.getAllPosts().subscribe((postsData) => {
+      console.log(postsData.data.items, '.posts.docs');
+      this.getField = postsData.data.items.slice(0, 4);
+      // this.paginationObj.currentPage = postsData.posts.page;
+      // this.paginationObj.totalPage = postsData.posts.totalPages;
+      // this.paginationObj.totalDocs = postsData.posts.totalDocs;
+      // this.paginationObj.limit = postsData.posts.limit;
+      // this.paginationObj.hasNextPage = postsData.posts.hasNextPage;
+      // this.paginationObj.hasPrevPage = postsData.posts.hasPrevPage;
+      // this.paginationObj.totalPagesArray = Array(this.paginationObj.totalPage)
+      //   .fill(0)
+      //   .map((_, index) => index + 1);
+    });
   }
 }

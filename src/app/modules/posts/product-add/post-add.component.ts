@@ -21,10 +21,7 @@ export class PostAddComponent {
   postForm = this.builder.group({
     title: ['', [Validators.required, Validators.minLength(4)]],
     content: ['', [Validators.required]],
-    images: [
-      ['f15eb44c-13eb-4585-9ddf-a532d8e03a7a.png'],
-      [Validators.required],
-    ],
+    images: [[''], [Validators.required]],
     address: ['', [Validators.required]],
     author: [''],
     category: ['', [Validators.required]],
@@ -57,17 +54,10 @@ export class PostAddComponent {
   }
 
   handleFileInput(event: any): void {
-    const files = event.target.files;
-    /* update image to nodejs */
-    this.uploadImageService.uploadImage(files).subscribe(
-      (res) => {
-        this.urls = res.urls;
-        this.imagePreviews = res.urls; /* preview image */
-      },
-      () => {
-        this.toastr.error('Tải hình ảnh lên thất bại');
-      }
-    );
+    const files: FileList = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      this.urls.push(files[i]);
+    }
   }
   handleRemoveImage(public_id: string) {
     if (!public_id) return;
@@ -90,7 +80,7 @@ export class PostAddComponent {
       Name: this.postForm.value.title,
       Description: this.postForm.value.content,
       // category: this.postForm.value.category,
-      images: this.urls,
+      images: this.urls[0],
       Address: this.postForm.value.address,
       // is_active:
       //   this.postForm.value.is_active === '' ||
@@ -110,8 +100,11 @@ export class PostAddComponent {
     if (this.postForm.value.address) {
       postData.append('Address', this.postForm.value.address);
     }
+    if (this.postForm.value.price) {
+      postData.append('price', this.postForm.value.price.toString());
+    }
     for (const image of this.urls) {
-      postData.append('images', image);
+      postData.append('picture', image);
     }
     this.postsService.createPost(postData).subscribe(
       () => {

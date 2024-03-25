@@ -128,7 +128,7 @@
                 <div class="post__image-group">
                   <div class="post__image-wrapper">
                     <img
-                      src="https://img.thegioithethao.vn/thumbs/san-bong-da/ha-noi/nam-tu-liem/garden-city/garden-city-1_thumb_500.webp"
+                      src="https://2c0e-222-252-24-198.ngrok-free.app/root/{{post.picture}}"
                       alt=""
                       class="mb-1 post__image"
                     />
@@ -143,7 +143,6 @@
               <td>
                 {{ post?.price?.toLocaleString() || 0 }} VND
                 </td>
-
               <td>
                 <span
                   class="text-light p-1 rounded {{
@@ -164,14 +163,14 @@
                 >
                   <i class="fa-solid fa-eye"></i>
                 </button>
-                <a routerLink="/admin/post-edit/{{ post._id }}">
+                <a routerLink="/admin/post-edit/{{ post.id }}">
                   <button class="settings text-primary">
                     <i class="fa-solid fa-pen-to-square"></i>
                   </button>
                 </a>
                 <button
                   class="delete text-danger"
-                  (click)="handleDelete(post._id!)"
+                  (click)="handleDelete(post.id!)"
                 >
                   <i class="fa-sharp fa-solid fa-trash"></i>
                 </button>
@@ -186,7 +185,7 @@
               <td>{{ tag.title }}</td>
               <td>{{ tag.slug }}</td>
               <td>
-                <a routerLink="/admin/edit-tag/{{ tag._id }}">
+                <a routerLink="/admin/edit-tag/{{ tag.id }}">
                   <button class="settings text-primary">
                     <i class="fa-solid fa-pen-to-square"></i>
                   </button>
@@ -194,7 +193,7 @@
                 <button class="delete text-danger">
                   <i
                     class="fa-sharp fa-solid fa-trash"
-                    (click)="handleDelete(tag._id!)"
+                    (click)="handleDelete(tag.id!)"
                   ></i>
                 </button>
               </td>

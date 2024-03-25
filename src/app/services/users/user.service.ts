@@ -12,6 +12,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseURL } from 'src/app/utils/instance';
 import { Router } from '@angular/router';
+import { environment } from 'src/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,7 @@ import { Router } from '@angular/router';
 export class UserService {
   baseURL: string = '';
   constructor(private http: HttpClient, private router: Router) {
-    this.baseURL = `${baseURL}/users`;
+    this.baseURL = environment.API_URL;
   }
   getAccessToken() {
     const accessToken = JSON.parse(localStorage.getItem('accessToken') || '');
@@ -49,28 +50,16 @@ export class UserService {
   }
   /* create */
   createStaff(user: IUserRequest) {
-    return this.http.post(
-      'https://db83-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
-      user
-    );
+    return this.http.post(`${this.baseURL}/api/Account/CreateStaff`, user);
   }
   createUser(user: IUserRequest) {
-    return this.http.post(
-      'https://db83-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
-      user
-    );
+    return this.http.post(`${this.baseURL}/api/Account/CreateStaff`, user);
   }
   createManager(user: IUserRequest) {
-    return this.http.post(
-      'https://db83-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
-      user
-    );
+    return this.http.post(`${this.baseURL}/api/Account/CreateStaff`, user);
   }
   createOwner(user: IUserRequest) {
-    return this.http.post(
-      'https://db83-222-252-24-198.ngrok-free.app/api/Account/CreateStaff',
-      user
-    );
+    return this.http.post(`${this.baseURL}/api/Account/CreateStaff`, user);
   }
   /* update */
   updateUser(id: string | undefined, user: IUserRequest) {
@@ -114,11 +103,8 @@ export class UserService {
     return this.http.get<IUserAnalytics[]>(`${this.baseURL}/counter/user-new`);
   }
   getALlOrderByUser(idUser: string) {
-    return this.http.post(
-      `https://db83-222-252-24-198.ngrok-free.app/api/Booking/History`,
-      {
-        userId: idUser,
-      }
-    );
+    return this.http.post(`${this.baseURL}/api/Booking/History`, {
+      userId: idUser,
+    });
   }
 }

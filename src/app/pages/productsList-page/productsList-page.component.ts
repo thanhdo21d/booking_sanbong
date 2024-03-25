@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ICategory } from 'src/app/interfaces/Category';
 import { IPosts } from 'src/app/interfaces/Product';
 import { ProductsService } from 'src/app/services/products/products.service';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-productsList-page',
@@ -14,6 +15,8 @@ export class ProductsListPageComponent {
   isActive = false;
   posts: IPosts[] = [];
   currentPage: number = 1;
+  urlImage: string = environment.API_URL + '/root/';
+
   totalDocs!: number;
   totalPages!: number;
   totalPagesArray!: number[];
@@ -43,7 +46,7 @@ export class ProductsListPageComponent {
     this.postService
       .getPostsApporved(this.currentPage)
       .subscribe((allPosts) => {
-        console.log(allPosts,'allPosts')
+        console.log(allPosts, 'allPosts');
         this.posts = allPosts.data.items;
         this.currentPage = allPosts.posts.page;
         this.totalPages = allPosts.posts.totalPages;

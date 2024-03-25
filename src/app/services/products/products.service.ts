@@ -6,14 +6,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { baseURL } from 'src/app/utils/instance';
+import { environment } from 'src/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  baseURL: string = '';
+  baseURL: any = '';
   constructor(private http: HttpClient, private router: Router) {
-    this.baseURL = `${baseURL}`;
+    this.baseURL = environment.API_URL;
+    this.getAccessToken();
   }
   getAccessToken() {
     const accessToken = JSON.parse(localStorage.getItem('accessToken') || '');
@@ -21,6 +23,7 @@ export class ProductsService {
     if (!accessToken || accessToken === '') {
       this.router.navigate(['/login-admin']);
     }
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${accessToken}`,
     });
@@ -28,21 +31,13 @@ export class ProductsService {
     return options;
   }
   getAllPosts(): Observable<any> {
-    return this.http.post<any>(
-      `https://db83-222-252-24-198.ngrok-free.app/api/Field/GetData`,
-      {}
-    );
+    return this.http.post<any>(`${this.baseURL}/api/Field/GetData`, {});
   }
   getPostsApporved(data: any): Observable<any> {
-    return this.http.post<any>(
-      `https://db83-222-252-24-198.ngrok-free.app/api/Field/GetData`,
-      {}
-    );
+    return this.http.post<any>(`${this.baseURL}/api/Field/GetData`, {});
   }
   getPost(id: number | string): Observable<any> {
-    return this.http.get<any>(
-      `https://db83-222-252-24-198.ngrok-free.app/api/Field/GetField/${id}`
-    );
+    return this.http.get<any>(`${this.baseURL}/api/Field/GetField/${id}`);
   }
   deleteFakePost(id: number | string) {
     return this.http.put(`${baseURL}/posts/delete-fake/${id}`, {
@@ -51,22 +46,19 @@ export class ProductsService {
   }
   createPost(post: any): Observable<any> {
     // const options = this.getAccessToken();
-    return this.http.post(
-      `https://db83-222-252-24-198.ngrok-free.app/api/Field/Create`,
-      post
-    );
+    return this.http.post(`${this.baseURL}/api/Field/Create`, post);
   }
 
-  updatePost(post: any, id: string): Observable<any> {
+  updatePost(post: any): Observable<any> {
     // const options = this.getAccessToken();
-    return this.http.put(`${baseURL}/posts/${id}`, post);
+    return this.http.post(`${this.baseURL}/api/Field/Edit`, post);
   }
 
   /* get post by id */
   getPostById(id: string): Observable<any> {
     return this.http.get<any>(
-      // `https://db83-222-252-24-198.ngrok-free.app/api/Field/GetField/${id}`
-      `https://db83-222-252-24-198.ngrok-free.app/api/Field/GetField/197bdd2e-823b-47b5-e895-08dc4308236a`
+      `${this.baseURL}/api/Field/GetField/${id}`
+      // `http://2c0e-222-252-24-198.ngrok-free.app/api/Field/GetField/${id}`
     );
   }
 
@@ -125,7 +117,7 @@ export class ProductsService {
   }
   createBookingFb(post: any) {
     return this.http.post(
-      `https://db83-222-252-24-198.ngrok-free.app/api/Booking/Create
+      `${this.baseURL}/api/Booking/Create
       `,
       post
     );

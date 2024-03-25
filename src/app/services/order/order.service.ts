@@ -3,6 +3,7 @@ import { IOrder } from 'src/app/interfaces/order.interface';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from 'src/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class OrderService {
   cart: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {
-    this.baseURL = `http://localhost:8080/api/`;
+    this.baseURL = environment.API_URL;
   }
   getAccessToken() {
     const accessToken = JSON.parse(localStorage.getItem('accessToken') || '');
@@ -27,10 +28,7 @@ export class OrderService {
     return options;
   }
   getAllOrder(): Observable<any> {
-    return this.http.post<any>(
-      `https://db83-222-252-24-198.ngrok-free.app/api/Booking/History`,
-      {}
-    );
+    return this.http.post<any>(`${this.baseURL}/api/Booking/History`, {});
   }
   getIdOrder(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseURL}getId-order/${id}`);

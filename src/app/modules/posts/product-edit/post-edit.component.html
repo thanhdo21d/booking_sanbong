@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row g-5">
     <div class="col-6 text-capitalize">
-      <h2>Sửa sản phẩm</h2>
+      <h2>Sửa sân </h2>
     </div>
     <div class="col-6">
       <div class="d-flex justify-content-end align-items-center">
@@ -19,7 +19,7 @@
         <div class="row g-5">
           <div class="col-6">
             <mat-form-field class="form__field">
-              <mat-label>Tiêu đề </mat-label>
+              <mat-label>Tên sân bóng </mat-label>
               <input type="text" matInput formControlName="title" />
             </mat-form-field>
             <div
@@ -30,14 +30,34 @@
               class="text-danger"
             >
               <div *ngIf="EditForm.get('title')?.errors?.['required']">
-                Tiêu đề là bắt buộc .
+                Tên sân là bắt buộc .
               </div>
               <div *ngIf="EditForm.get('title')?.errors?.['minlength']">
-                Tiêu đề ít nhất 4 ký tự .
+                Tên sân ít nhất 4 ký tự .
               </div>
             </div>
           </div>
-          <div class="col-6">
+               <div class="col-6">
+            <mat-form-field class="form__field">
+              <mat-label>địa chỉ sân bóng </mat-label>
+              <input type="text" matInput formControlName="address" />
+            </mat-form-field>
+            <div
+              *ngIf="
+                EditForm.get('address')?.invalid &&
+                (EditForm.get('address')?.dirty || EditForm.get('address')?.touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="EditForm.get('address')?.errors?.['required']">
+                địa chỉ là bắt buộc .
+              </div>
+              <div *ngIf="EditForm.get('address')?.errors?.['minlength']">
+                địa chỉ ít nhất 4 ký tự .
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-6">
             <mat-form-field class="form__field">
               <mat-label>Danh mục </mat-label>
               <mat-select formControlName="category">
@@ -60,9 +80,9 @@
                 Danh mục bắt buộc
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="col-6">
+          <!-- <div class="col-6">
             <mat-radio-group
               aria-label="Trạng thái bài post"
               formControlName="is_active"
@@ -86,8 +106,8 @@
                 Trạng thái là bắt buộc
               </div>
             </div>
-          </div>
-          <div class="col-6">
+          </div> -->
+          <!-- <div class="col-6">
             <mat-form-field class="form__field">
               <mat-label>Duyệt sản phẩm</mat-label>
               <mat-select formControlName="status">
@@ -96,7 +116,7 @@
                 <mat-option value="rejected">Reject</mat-option>
               </mat-select>
             </mat-form-field>
-          </div>
+          </div> -->
           <div class="col-6">
             <mat-form-field class="form__field">
               <mat-label>Giá </mat-label>
@@ -110,7 +130,7 @@
               class="text-danger"
             >
               <div *ngIf="EditForm.get('price')?.errors?.['required']">
-                Giá sản phẩm là bắt buộc.
+                Giá sân là bắt buộc.
               </div>
             </div>
           </div>
@@ -174,7 +194,6 @@
         </div>
         <button
           type="submit"
-          [disabled]="EditForm.invalid"
           class="btn btn-primary d-flex justify-content-center align-items-center w-100"
         >
           <i class="fa-solid fa-save mx-2"></i>

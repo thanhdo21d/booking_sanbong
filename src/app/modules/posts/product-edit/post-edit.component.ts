@@ -23,9 +23,10 @@ export class PostEditComponent implements AfterViewInit {
   EditForm = this.builder.group({
     title: ['', [Validators.required, Validators.minLength(4)]],
     content: ['', [Validators.required]],
-
+    address: ['', [Validators.required, Validators.minLength(4)]],
     images: [[''], [Validators.required]],
     author: [''],
+    description: ['', [Validators.required]],
     category: ['', [Validators.required]],
     is_active: [''],
     status: ['peding', [Validators.required]],
@@ -54,18 +55,16 @@ export class PostEditComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const id = this.params.snapshot.params['id'];
     this.postsService.getPostById(id).subscribe((data) => {
-      this.ContentPost = data.post;
-      this.imagePreviews = data.post.images;
+      console.log(data, 'dataid');
+      this.ContentPost = data.data;
+      this.imagePreviews = data.data.picture;
       this.tempFile = data.post.images;
 
       this.EditForm.patchValue({
-        title: data.post.title,
-        content: data.post.content,
-        price: +data.post.price,
-        category: data.post.category._id,
-        is_active: data.post.is_active ? 'public' : 'private',
-        status: data.post.status,
-        author: data.post.author._id,
+        title: data.data.name,
+        address: data.data.address,
+        price: data.data.price,
+        description: data.data.description,
       });
     });
   }
@@ -78,19 +77,11 @@ export class PostEditComponent implements AfterViewInit {
   }
 
   handleFileInput(event: any): void {
-    const files = event.target.files;
-    /* update image to nodejs */
-    this.uploadImageService.uploadImage(files).subscribe(
-      (res) => {
-        this.urls = res.urls;
-        this.imagePreviews = res.urls; /* preview image */
-      },
-      () => {
-        this.toastr.error('Tải hình ảnh lên thất bại');
-      }
-    );
+    const files: FileList = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      this.urls.push(files[i]);
+    }
   }
-
   handleRemoveImage(public_id: string) {
     if (!public_id) return;
     this.uploadImageService.deleteImage(public_id).subscribe(() => {
@@ -102,29 +93,40 @@ export class PostEditComponent implements AfterViewInit {
 
   handleSubmitPostForm() {
     const id = this.params.snapshot.params['id'];
-    if (this.EditForm.invalid) return;
     /* lấy ra thông tin người dùng */
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     if (!user) {
       this.toastr.error('Bạn chưa đăng nhập');
       return;
     }
-    /* lấy ra thông tin người dùng */
-    // const userId = user._id;
+
     const post = {
+      id: id,
       title: this.EditForm.value.title,
-      content: this.EditForm.value.content,
-      category: this.EditForm.value.category,
-      images: this.urls.length <= 0 ? this.tempFile : this.urls,
-      author: this.EditForm.value.author,
-      is_active: this.EditForm.value.is_active === 'public' ? true : false,
-      status: this.EditForm.value.status,
+      address: this.EditForm.value.address,
       price: this.EditForm.value.price,
+      images: this.urls[0],
+      Description: this.EditForm.value.content,
     };
 
-    // console.log(post);
+    const putData = new FormData();
+    if (this.EditForm.value.title) {
+      putData.append('Name', this.EditForm.value.title);
+    }
+    putData.append('Id', id);
+    if (this.EditForm.value.content) {
+      putData.append('Description', this.EditForm.value.content);
+    }
+    if (this.EditForm.value.address) {
+      putData.append('Address', this.EditForm.value.address);
+    }
+    if (this.EditForm.value.price) {
+      putData.append('price', this.EditForm.value.price.toString());
+    }
 
-    this.postsService.updatePost(post, id).subscribe(
+    putData.append('picture', this.urls[0]);
+
+    this.postsService.updatePost(putData).subscribe(
       () => {
         this.toastr.success('Chỉnh sửa thành công');
         this.router.navigate(['/admin/manager-product']);

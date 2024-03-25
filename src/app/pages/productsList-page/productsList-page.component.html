@@ -233,19 +233,17 @@
                 class=""
                 *ngFor="let featureItem of posts"
               >
-                <div class="item ">
-
+                <div [routerLink]="['/posts', featureItem.id]"  class="item ">
 
                   <figure class="product_image ">
-                      <img alt="Sân Bóng Đền Lừ 3"
-                        src="https://datsantructuyen.vn/images/products/2022/08/24/large/san-bong-den-lu_1661351091-copy-1.jpg"
-                        srcset="https://datsantructuyen.vn/images/products/2022/08/24/large/san-bong-den-lu_1661351091-copy-1.jpg.webp">
+                      <img style="width: 300px; height: 195px;" alt="Sân Bóng Đền Lừ 3"
+                          [src]="urlImage + featureItem.picture">
                   </figure>
                   <div class="product_info">
                     <h3>
-                      <a href="https://datsantructuyen.vn/san-bong-da/san-bong-den-lu-3-p506.html"
+                      <a
                         title="Sân Bóng Đền Lừ 3" class="name">
-                        Sân Bóng Đền Lừ 3 </a>
+                        {{featureItem.name}} </a>
                     </h3>
 
                     <div class="rate-item">
@@ -297,7 +295,7 @@
                     </div>
 
                     <div class="address_item">
-                      <strong>Địa chỉ:</strong> Đường Tân Mai - Tân Mai, Quận Hoàng Mai, Hà Nội
+                      <strong>Địa chỉ:</strong> {{featureItem.address}}
                     </div>
 
                     <div class="people_rate cls">
@@ -309,8 +307,7 @@
 
                     <div class="price_arae cls">
                       <div class="price_txt"><strong>Giá tham khảo</strong></div>
-                      <div class="price_min">400.000₫</div>
-                      <div class="price_max"> - 900.000₫</div>
+                      <div class="price_min">{{featureItem.price}} VND</div>
                       <div class="unit">/ Trận</div>
                     </div>
 
