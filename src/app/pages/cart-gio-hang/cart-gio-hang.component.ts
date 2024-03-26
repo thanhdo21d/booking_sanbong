@@ -7,6 +7,7 @@ import { IUserRequest } from 'src/app/interfaces/User';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { OrderService } from 'src/app/services/order/order.service';
 import { UserService } from 'src/app/services/users/user.service';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-cart-gio-hang',
@@ -21,6 +22,7 @@ export class CartGioHangComponent {
   totalAll = 0;
   ship = 15000;
   orderSuccess = false;
+  urlImage: string = environment.API_URL + '/root/';
 
   userInfo = this.formUserInfo.group({
     username: ['', [Validators.required, Validators.minLength(3)]],

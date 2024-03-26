@@ -68,6 +68,7 @@ import { ProductFeatureComponent } from './components/product-feature/product-fe
 import { AnalyticsComponent } from './pages/analytics/analytics.component';
 import { CartGioHangComponent } from './pages/cart-gio-hang/cart-gio-hang.component';
 import { DonHangComponent } from './pages/don-hang/don-hang.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +115,7 @@ import { DonHangComponent } from './pages/don-hang/don-hang.component';
     ProductFeatureComponent,
     ManageOrderComponent,
     AnalyticsComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

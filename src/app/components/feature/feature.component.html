@@ -75,7 +75,7 @@
                   <div class="address">
                     <span class="mr-2">Khu vực:</span> {{featureItem.address}}
                   </div>
-                  <div class="people-star d-flex align-items-center justify-content-between">
+                  <!-- <div class="people-star d-flex align-items-center justify-content-between">
                     <div class="people">Số sân: 6</div>
                     <div class="star-item">
                       <div class="icon">
@@ -93,7 +93,7 @@
                       </div>
                       <div class="number">(1)</div>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="price mt-2">
                     <span class="price-amount"></span>
                   </div>
@@ -101,7 +101,7 @@
                     <span class="title">Giá</span>
                     <div class="inner-time">
                       <div class="list-time">
-                        <div class="time">{{featureItem.price}}</div>
+                        <div class="time">{{featureItem.price?.toLocaleString()}} VNĐ</div>
 
                       </div>
                     </div>

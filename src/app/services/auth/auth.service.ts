@@ -63,10 +63,17 @@ export class AuthService {
     );
   }
 
-  uploadAvatarUser(avatar: any): any {
+  uploadAvatarUser(file: any): any {
     return this.http.post<any>(
       `${this.baseURL}/api/Account/UploadAvatar`,
-      avatar
+      file
+    );
+  }
+
+  changePassWord(data : any): any {
+    return this.http.post<any>(
+      `${this.baseURL}/api/Account/ChangePassword`,
+      data
     );
   }
 }

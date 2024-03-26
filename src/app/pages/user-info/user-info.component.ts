@@ -101,9 +101,8 @@ export class UserInfoComponent {
       return;
     }
     const imageFrom = new FormData();
-
+    console.log(this.urls[0])
     imageFrom.append('file', this.urls[0]);
-
     this.auth.uploadAvatarUser(imageFrom).subscribe(
       () => {
         this.toastr.success('thành công');
