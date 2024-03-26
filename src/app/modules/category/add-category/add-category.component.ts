@@ -17,6 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AddCategoryComponent {
   addForm = this.builder.group({
     name: ['', [Validators.required]],
+    description: ['', [Validators.required]],
   });
   categories!: ICategory[];
   constructor(
@@ -33,18 +34,19 @@ export class AddCategoryComponent {
   /* handle add new category */
   handleAddNewCategory() {
     if (this.addForm.invalid) return;
-    const category: ICategory = {
+    const category: any = {
       name: this.addForm.value.name || '',
+      description: this.addForm.value.description || '',
     };
     /* compare name */
-    const isExist = this.categories.find((categoryItem) => {
-      return categoryItem.name === category.name.trim();
-    });
-    if (isExist) {
-      // this.toastr.warning('Tên danh mục đã tồn tại');
-      this.addForm.reset();
-      return;
-    }
+    // const isExist = this.categories.find((categoryItem) => {
+    //   return categoryItem.name === category.name.trim();
+    // });
+    // if (isExist) {
+    //   // this.toastr.warning('Tên danh mục đã tồn tại');
+    //   this.addForm.reset();
+    //   return;
+    // }
 
     this.categoryService.addNewCategory(category).subscribe(() => {
       this.router.navigate(['/admin/manager-categories']);

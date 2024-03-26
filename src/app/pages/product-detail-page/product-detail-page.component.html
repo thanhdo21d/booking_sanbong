@@ -17,7 +17,7 @@
           <div class="detail_main_top cls">
             <div class="frame_left frame_left_animate">
               <div class="product_name cls">
-                <h1 itemprop="name">Sân Bóng Đền Lừ 3</h1>
+                <h1 itemprop="name">{{post.name}}</h1>
                 <span
                   class="rate rate_head"
                   itemprop="aggregateRating"
@@ -132,8 +132,10 @@
                       title=""
                     >
                       <img
+                      style="width: 100%;"
                         onclick="gotoGallery(1,0,0);"
-                        src="https://datsantructuyen.vn/images/products/2022/08/24/large/san-bong-den-lu_1661351091-copy-1.jpg"
+                        [src]=" urlImage + post.picture"
+
                       />
                     </a>
                   </div>
@@ -169,8 +171,7 @@
                               >
                                 <img
                                   onclick="gotoGallery(1,0,0);"
-                                  src="https://datsantructuyen.vn/images/products/2022/08/24/large/san-bong-den-lu_1661351091-copy-1.jpg"
-                                  longdesc="https://datsantructuyen.vn/images/products/2022/08/24/large/san-bong-den-lu_1661351091-copy-1.jpg"
+                                  [src]=" urlImage + post.picture"
                                   alt="Sân Bóng Đền Lừ 3"
                                   itemprop="image"
                                 />
@@ -190,8 +191,7 @@
                               >
                                 <img
                                   onclick="gotoGallery(1,0,0);"
-                                  src="https://datsantructuyen.vn/images/products/2022/11/10/large/san-bong-den-lu-3_1668075108.jpeg"
-                                  longdesc="https://datsantructuyen.vn/images/products/2022/11/10/original/san-bong-den-lu-3_1668075108.jpeg"
+                                  [src]=" urlImage + post.picture"
                                   alt="Sân Bóng Đền Lừ 3"
                                   class="image0"
                                   itemprop="image"
@@ -212,8 +212,7 @@
                               >
                                 <img
                                   onclick="gotoGallery(1,0,0);"
-                                  src="https://datsantructuyen.vn/images/products/2022/11/10/large/san-bong-den-lu_1668075109.jpeg"
-                                  longdesc="https://datsantructuyen.vn/images/products/2022/11/10/original/san-bong-den-lu_1668075109.jpeg"
+                                  [src]=" urlImage + post.picture"
                                   alt="Sân Bóng Đền Lừ 3"
                                   class="image1"
                                   itemprop="image"
@@ -264,8 +263,7 @@
                             title="Sân Bóng Đền Lừ 3"
                           >
                             <img
-                              src="https://datsantructuyen.vn/images/products/2022/08/24/small/san-bong-den-lu_1661351091-copy-1.jpg"
-                              longdesc="https://datsantructuyen.vn/images/products/2022/08/24/original/san-bong-den-lu_1661351091-copy-1.jpg"
+                              [src]=" urlImage + post.picture"
                               alt="Sân Bóng Đền Lừ 3"
                               itemprop="image"
                             />
@@ -285,8 +283,7 @@
                             data-order="1"
                           >
                             <img
-                              src="https://datsantructuyen.vn/images/products/2022/11/10/small/san-bong-den-lu-3_1668075108.jpeg"
-                              longdesc="https://datsantructuyen.vn/images/products/2022/11/10/original/san-bong-den-lu-3_1668075108.jpeg"
+                            [src]=" urlImage + post.picture"
                               alt="Sân Bóng Đền Lừ 3"
                               class="image0"
                               itemprop="image"
@@ -307,8 +304,7 @@
                             data-order="2"
                           >
                             <img
-                              src="https://datsantructuyen.vn/images/products/2022/11/10/small/san-bong-den-lu_1668075109.jpeg"
-                              longdesc="https://datsantructuyen.vn/images/products/2022/11/10/original/san-bong-den-lu_1668075109.jpeg"
+                            [src]=" urlImage + post.picture"
                               alt="Sân Bóng Đền Lừ 3"
                               class="image1"
                               itemprop="image"
@@ -358,7 +354,7 @@
                   <h2 class="name-tt">Địa chỉ</h2>
                 </div>
                 <div class="content-box">
-                  Đường Tân Mai - Tân Mai, Quận Hoàng Mai, Hà Nội
+                  {{post.address}}
                   <a
                     class="link-map"
                     rel="nofollow"

@@ -53,7 +53,6 @@ export class SidebarAdminComponent {
       icon: 'fas fa-users',
       isActive: false,
       queryParams: { type: 'Manager' }
-
     },
     {
       routerLink: 'manager-product',
@@ -63,11 +62,10 @@ export class SidebarAdminComponent {
     },
     {
       routerLink: 'manager-categories',
-      label: 'Danh mục',
+      label: 'Khu vực',
       icon: 'fa-solid fa-list',
       isActive: false,
     },
-
     {
       routerLink: 'trash-can',
       label: 'Trash can',

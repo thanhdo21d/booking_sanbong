@@ -52,8 +52,8 @@ export class ProductsDetailPageComponent {
 
       this.postService.getPost(id!).subscribe(
         (data) => {
-          console.log(data, 'db');
-          this.post = data.post;
+          console.log(data.data, 'db');
+          this.post = data.data;
           // this.cateService
           //   .getRelatedPost(data.post.category._id)
           //   .subscribe(({ data }) => {

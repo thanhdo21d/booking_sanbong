@@ -11,8 +11,8 @@ import { ICategory } from 'src/app/interfaces/Category';
 export class CategoriesComponent {
   title: string = 'Quản lý các danh mục';
   routerLink: string = '/admin/add-category';
-  theadTable: string[] = ['STT', 'Tên danh mục', 'Slug', 'Action'];
-  categories: ICategory[] = [];
+  theadTable: string[] = ['STT', 'Tên danh mục', 'mô trả', 'Action'];
+  categories: any[] = [];
   constructor(
     private categoryService: CategoryService,
     private excelServiceService: ExcelServiceService
@@ -22,6 +22,7 @@ export class CategoriesComponent {
   /* get all categories */
   getAllCategories() {
     this.categoryService.getAllCategories().subscribe((categoriesData) => {
+      console.log(categoriesData,"categoriesData")
       this.categories = categoriesData.data;
     });
   }
