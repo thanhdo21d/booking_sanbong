@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { IUser } from 'src/app/interfaces/User';
 import { UserService } from 'src/app/services/users/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-manage-user',
@@ -19,18 +21,21 @@ export class ManageUserComponent {
     hasNextPage: false,
     hasPrevPage: false,
   };
+  urlImage: string = environment.API_URL + '/root/';
+
   title: string = 'Quản lý người dùng';
   titleModal: string = 'Thêm người dùng';
   linkActive: string = '/admin/add-user';
   theadTable: string[] = [
     'STT',
+    'Ảnh',
     'Tên',
+    'Giới tính',
     'Email',
     'Quyền',
-    'Trạng thái',
     'Action',
   ];
-  usersList: IUser[] = [];
+  usersList: any[] = [];
   userForm = this.builder.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
@@ -42,7 +47,9 @@ export class ManageUserComponent {
   constructor(
     private userService: UserService,
     private builder: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    // private activatedRoute: ActivatedRoute
   ) {
     this.getAllUsers();
   }
@@ -59,22 +66,24 @@ export class ManageUserComponent {
     });
   }
   /* get All users */
+
   getAllUsers() {
-    this.userService
-      .getAllUsers(this.paginationObj.currentPage)
-      .subscribe((users) => {
-        // console.log(users);
-        this.usersList = users.docs;
-        this.paginationObj.currentPage = users.page;
-        this.paginationObj.totalPage = users.totalPages;
-        this.paginationObj.totalDocs = users.totalDocs;
-        this.paginationObj.limit = users.limit;
-        this.paginationObj.hasNextPage = users.hasNextPage;
-        this.paginationObj.hasPrevPage = users.hasPrevPage;
-        this.paginationObj.totalPagesArray = Array(this.paginationObj.totalPage)
-          .fill(0)
-          .map((_, index) => index + 1);
-      });
+    this.route.queryParams.subscribe((params) => {
+      console.log(params);
+      // const type = params.get('type');
+   const type =   params['type']
+   console.log(type);
+      if (type) {
+        this.userService
+          .getUserByAll({
+            type: type,
+          })
+          .subscribe((users: any) => {
+            console.log(users.data.items, 'users');
+            this.usersList = users.data.items;
+          });
+      }
+    });
   }
   /* handle add new user */
   handleAddNewUser() {

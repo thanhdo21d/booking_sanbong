@@ -55,12 +55,22 @@
               </div>
             </div>
           </div>
+
+          <div class="col-6">
+            <mat-form-field class="form__field">
+              <mat-label>Phone Number</mat-label>
+              <input type="text" matInput formControlName="phone" />
+            </mat-form-field>
+          </div>
           <div class="col-6">
             <mat-form-field class="form__field">
               <mat-label>Role</mat-label>
               <mat-select formControlName="role">
-                <mat-option value="admin">Admin</mat-option>
-                <mat-option value="user">User</mat-option>
+                <mat-option value="Admin">Admin</mat-option>
+                <mat-option value="Manager">Manager</mat-option>
+                <mat-option value="Staff">Staff</mat-option>
+                <mat-option value="FieldOwner">FieldOwner</mat-option>
+                <mat-option value="EndUser">EndUser</mat-option>
               </mat-select>
             </mat-form-field>
             <div
@@ -139,40 +149,7 @@
             </div>
           </div>
         </div>
-        <div class="row mt-5">
-          <div class="col-12 mb-5">
-            <input
-              class="form-control"
-              type="file"
-              accept="image/*"
-              id="formFileMultiple"
-              (change)="handleGetFileInput($event)"
-            />
-            <div
-              *ngIf="
-                userForm.get('avatar')?.invalid &&
-                (userForm.get('avatar')?.dirty ||
-                  userForm.get('avatar')?.touched)
-              "
-              class="text-danger"
-            >
-              <div *ngIf="userForm.get('avatar')?.errors?.['required']">
-                Avatar is required.
-              </div>
-            </div>
-          </div>
-          <div class="image-preview" *ngIf="imagePreview">
-            <div class="preview-container">
-              <div
-                class="preview-remove"
-                (click)="handleRemoveImage(imagePreview.public_id)"
-              >
-                <i class="fa-solid fa-circle-xmark"></i>
-              </div>
-              <img [src]="imagePreview.url" class="preview-image" alt="image" />
-            </div>
-          </div>
-        </div>
+
         <!-- [disabled]="!userForm.valid" -->
         <button
 

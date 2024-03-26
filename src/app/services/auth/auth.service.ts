@@ -56,8 +56,8 @@ export class AuthService {
     return role == user.role ? true : false;
   }
   /* signup */
-  signUpUser(userInfo: IUserRegister): Observable<IUserResponse> {
-    return this.http.post<IUserResponse>(
+  signUpUser(userInfo: IUserRegister): Observable<any> {
+    return this.http.post<any>(
       `${this.baseURL}/api/Account/Register`,
       userInfo
     );

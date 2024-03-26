@@ -1,13 +1,207 @@
-<app-layout-manager
-  [title]="title"
-  [theadTable]="theadTable"
-  (delete)="handleDeleteUser($event)"
-  [dataTbody]="usersList"
-  [titleModal]="titleModal"
-  [userForm]="userForm"
-  [linkActive]="linkActive"
-  [paginationObj]="paginationObj"
-  (gotoPage)="gotoPage($event)"
-  (prevPage)="prevPage($event)"
-  (nextPage)="nextPage($event)"
-/>
+<div class="container-xl">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-5">
+            <h2>{{ title }}</h2>
+          </div>
+          <div class="col-sm-7">
+
+          </div>
+        </div>
+      </div><div class="col-sm-7">
+        <a [routerLink]="linkActive">
+          <button class="btn btn-secondary">
+            <i class="fa-solid fa-plus"></i>
+            <span>Add New</span>
+          </button>
+        </a>
+
+      </div>
+      <div class="table-container">
+        <table class="table table-striped table-hover">
+          <thead class="text-center">
+            <tr>
+              <th *ngFor="let theadItem of theadTable">{{ theadItem }}</th>
+            </tr>
+          </thead>
+              <!-- class="{{ post.status === 'pending' ? 'bg-FFAF40' : 'bg-red' }}" -->
+<!--  -->
+          <tbody >
+            <tr
+              *ngFor="let post of usersList; let i = index"
+            >
+              <td>{{ i + 1 }}</td>
+              <td>
+                <div class="post__image-group">
+                  <div class="post__image-wrapper">
+                    <img
+                      [src]="urlImage + post.picture"
+                      alt=""
+                      class="mb-1 post__image"
+                    />
+                  </div>
+
+                </div>
+              </td>
+              <td>
+                {{ post.name }}
+              </td>
+              <td>{{ post.gender }}</td>
+              <td>
+                {{ post?.email }}
+                </td>
+                <td>
+                  {{ post?.type }}
+                  </td>
+              <td>
+                <!-- <button class="text-warning" (click)="getPostById(post._id!)" data-toggle="modal"
+                  data-target="#exampleModal"> -->
+                <button
+                  class="text-23BB86"
+
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+                <a routerLink="/admin/post-edit/{{ post.id }}">
+                  <button class="settings text-primary">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                </a>
+                <button
+                  class="delete text-danger"
+                >
+                  <i class="fa-sharp fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+
+
+
+
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- modal add -->
+<!-- <app-layout-modal-admin data-bs-toggle="modal" data-bs-target="#exampleModal" [titleModal]="titleModal"
+  [postInfo]="postInfo"></app-layout-modal-admin> -->
+
+<!-- Modal -->
+<!-- <div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thông tin sân bóng</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="postInfo">
+        <section class="content-detail-posts my-5">
+          <div class="row align-items-center mb-5">
+            <div class="col-sm-12 col-lg-6">
+              <div class="main-img">
+                <img
+                  [src]="postInfo.images[0].url"
+                  alt="{{ postInfo.title }}"
+                  class="w-100 post__image-preview"
+                />
+              </div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+              <div class="info">
+                <div class="tag mb-2">
+                  <span
+                    class="d-inline-block font-600 bg-F3EDFF text-6B6B6B rounded-4 text-sm px-3"
+                    >{{ postInfo.category.name }}</span
+                  >
+                </div>
+                <div class="title mb-3">
+                  <h1 class="text-23BB86 font-600">
+                    {{ postInfo.title }}
+                  </h1>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                  <span class="text-6B6B6B text-sm font-600">{{
+                    handleFomatDate(postInfo.createdAt)
+                  }}</span>
+                  <span
+                    class="d-inline-block rounded-circle"
+                    style="width: 6px; height: 6px; background: #b1b5c3"
+                  ></span>
+                  <span class="text-6B6B6B text-sm font-600">{{
+                    postInfo.author.username
+                  }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-posts mx-auto">
+            <div class="content" [innerHTML]="postInfo.content">
+              <h2 class="text-2xl font-600 mb-3">{{ postInfo.title }}</h2>
+              {{ postInfo.content }}
+            </div>
+            <div class="author mt-5">
+              <div class="row align-items-center">
+                <div class="col-sm-12 col-md-4 mb-4">
+                  <div class="img">
+                    <img
+                      [width]="100"
+                      src="{{
+                        postInfo.author.avatar ||
+                          'https://api.multiavatar.com/' +
+                            postInfo.author.username +
+                            '.png'
+                      }}"
+                      alt=""
+                      class="mx-auto"
+                    />
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-8">
+                  <div class="infomation">
+                    <div class="name mb-3">
+                      <h3 class="text-23BB86 font-600 text-2xl">
+                        {{ postInfo.author.username }}
+                      </h3>
+                    </div>
+                    <div class="quote">
+                      <p>
+                        Gastronomy atmosphere set aside. Slice butternut cooking
+                        home. Delicious romantic undisturbed raw platter will
+                        meld. Thick Skewers skillet natural, smoker soy sauce
+                        wait roux. Gastronomy atmosphere set aside. Slice
+                        butternut cooking home.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div> -->

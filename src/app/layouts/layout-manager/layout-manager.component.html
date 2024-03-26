@@ -118,7 +118,7 @@
           </tbody> -->
           <!-- Posts -->
 
-          <tbody *ngIf="posts.length > 0">
+          <tbody >
             <tr
               *ngFor="let post of posts; let i = index"
               class="{{ post.status === 'pending' ? 'bg-FFAF40' : 'bg-red' }}"

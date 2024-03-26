@@ -5,21 +5,24 @@ import { UploadImageService } from 'src/app/services/uploadImage/upload-image.se
 import { UserService } from 'src/app/services/users/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.scss'],
 })
+// signUpUser
 export class AddUserComponent {
   imagePreview: any;
   userForm = this.fb.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(5)]],
     email: ['', [Validators.required, Validators.email]],
-    role: ['user', [Validators.required]],
+    role: ['EndUser', [Validators.required]],
     gender: ['other', [Validators.required]],
     avatar: ['', [Validators.required]],
+    phone: ['', [Validators.required]],
     cfpassword: ['', [Validators.required]],
   });
   constructor(
@@ -27,7 +30,8 @@ export class AddUserComponent {
     private fb: FormBuilder,
     private ImageService: UploadImageService,
     private toastr: ToastrService,
-    private redirect: Router
+    private redirect: Router,
+    private authService: AuthService
   ) {}
 
   handleGetFileInput(fileInput: any) {
@@ -61,16 +65,16 @@ export class AddUserComponent {
   }
   onHandleSubmit() {
 
-    const user: IUserRequest = {
+    const user: any = {
       name: this.userForm.value.username || '',
       password: this.userForm.value.password || '',
       email: this.userForm.value.email || '',
-      // role: this.userForm.value.role || '',
-      // avatar: this.userForm.value.avatar || '',
+      type: this.userForm.value.role || '',
+      phone: this.userForm.value.phone || '',
       gender: this.userForm.value.gender || '',
       confirmPassword: this.userForm.value.cfpassword || '',
     };
-    this.userService.createUser(user).subscribe(
+    this.authService.signUpUser(user).subscribe(
       (data) => {
         console.log(data);
         this.toastr.success('Create user successful');

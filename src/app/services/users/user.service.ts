@@ -107,4 +107,8 @@ export class UserService {
       userId: idUser,
     });
   }
+  getUserByAll(data : any): any{
+    return this.http.post(`${this.baseURL}/api/Account/GetData`, data);
+    //Account/GetData
+  }
 }

@@ -4,7 +4,8 @@
   <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white" aria-label="">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
-        <a *ngFor="let menuItem of menuItems" [routerLink]="menuItem.routerLink" (click)="setActiveItem(menuItem)"
+        <a *ngFor="let menuItem of menuItems" [routerLink]="menuItem.routerLink" [queryParams]="menuItem.queryParams" (click)="setActiveItem(menuItem)"
+
           class="list-group-item list-group-item-action py-2 ripple {{menuItem.isActive === true ? 'active' : ''}}"
           aria-current="true">
           <i class="{{menuItem.icon}} me-3"></i>
