@@ -48,20 +48,22 @@ export class CategoryService {
   /* add new category */
   addNewCategory(category: ICategory): Observable<ICategory> {
     // const options = this.getAccessToken();
-    return this.http.post<ICategory>(`${this.baseURL}/api/FieldArea/Create`, category);
+    return this.http.post<ICategory>(
+      `${this.baseURL}/api/FieldArea/Create`,
+      category
+    );
   }
   /* delete category */
   deleteCategory(id: string): Observable<ICategory> {
     // const options = this.getAccessToken();
-    return this.http.delete<ICategory>(`${this.baseURL}/${id}`);
+    return this.http.post<ICategory>(
+      `${this.baseURL}/api/FieldArea/Delete/${id}`,
+      {}
+    );
   }
   /* update category */
-  updateCategory(
-    id: string,
-    category: { name: string }
-  ): Observable<ICategory> {
-    // const options = this.getAccessToken();
-    return this.http.put<ICategory>(`${this.baseURL}/${id}`, category);
+  updateCategory(category: any): Observable<any> {
+    return this.http.post<any>(`${this.baseURL}/api/FieldArea/Edit`, category);
   }
   /* get category by id */
   getCategoryById(

@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class EditCategoryComponent {
   editForm = this.builder.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
+    description: ['', [Validators.required, Validators.minLength(3)]],
   });
   constructor(
     private categoryService: CategoryService,
@@ -30,9 +31,11 @@ export class EditCategoryComponent {
     if (this.editForm.invalid) return;
     const id = this.route.snapshot.paramMap.get('id');
     const category = {
+      id: id,
       name: this.editForm.value.name || '',
+      description: this.editForm.value.description || '',
     };
-    this.categoryService.updateCategory(id!, category).subscribe(() => {
+    this.categoryService.updateCategory( category).subscribe(() => {
       this.toastr.success('Update category successfully!');
       this.router.navigate(['/admin/manager-categories']);
     });
@@ -41,6 +44,7 @@ export class EditCategoryComponent {
     this.categoryService.getCategoryById(id).subscribe((category) => {
       this.editForm.patchValue({
         name: category.data.name,
+        // description: category.data.description,
       });
     });
   }

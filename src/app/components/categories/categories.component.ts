@@ -35,6 +35,7 @@ export class CategoriesComponent {
   }
   /* handle delete user */
   handleDeleteCategory(id: string) {
+    if(window.confirm("Are you sure you want to delete"))
     this.categoryService
       .deleteCategory(id)
       .subscribe(() => this.getAllCategories());

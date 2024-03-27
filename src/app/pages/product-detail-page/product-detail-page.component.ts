@@ -13,7 +13,7 @@ import { environment } from 'src/environment';
 @Component({
   selector: 'app-product-detail-page',
   templateUrl: './product-detail-page.component.html',
-  styleUrls: ['./product-detail-page.component.scss'],
+  styleUrls: ['./product-detail-page.component.scss','./a.scss'],
 })
 export class ProductsDetailPageComponent {
   mailUser!: string | null;
@@ -21,7 +21,7 @@ export class ProductsDetailPageComponent {
   relatedPosts!: IPosts[];
   comments!: IResViewComment[];
   urlImage: string = environment.API_URL + '/root/';
-
+  getTimeField : any[] = []
   idPost!: string;
   getField!: any;
   bookingForm = this.builder.group({
@@ -54,6 +54,7 @@ export class ProductsDetailPageComponent {
         (data) => {
           console.log(data.data, 'db');
           this.post = data.data;
+          this.getTimeField = data.data.fieldTimes
           // this.cateService
           //   .getRelatedPost(data.post.category._id)
           //   .subscribe(({ data }) => {
@@ -104,4 +105,14 @@ export class ProductsDetailPageComponent {
       //   .map((_, index) => index + 1);
     });
   }
+  bookedTimes: string[] = ['2024-27-03T08:00', '2024-04-01T10:00', '2024-04-01T14:00'];
+
+  // Phương thức kiểm tra xem một thời gian đã được đặt hay chưa
+  isDateTimeDisabled(inputName: string): boolean {
+    const inputValue = this.bookingForm.get(inputName)?.value;
+    const inputTime = inputValue.slice(11); // Cắt bớt phần ngày để chỉ lấy thời gian
+    const isBooked = this.bookedTimes.includes(inputTime);
+    return isBooked;
+  }
+
 }

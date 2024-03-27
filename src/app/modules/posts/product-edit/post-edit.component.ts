@@ -50,21 +50,21 @@ export class PostEditComponent implements AfterViewInit {
     private params: ActivatedRoute
   ) {
     this.getAllCategories();
+    this.ngAfterViewInit()
   }
 
   ngAfterViewInit(): void {
     const id = this.params.snapshot.params['id'];
     this.postsService.getPostById(id).subscribe((data) => {
-      console.log(data, 'dataid');
-      this.ContentPost = data.data;
-      this.imagePreviews = data.data.picture;
-      this.tempFile = data.post.images;
+      console.log(data.data, 'dataid');
+
 
       this.EditForm.patchValue({
         title: data.data.name,
         address: data.data.address,
         price: data.data.price,
-        description: data.data.description,
+        content: data.data.description,
+        status: data.data.status
       });
     });
   }

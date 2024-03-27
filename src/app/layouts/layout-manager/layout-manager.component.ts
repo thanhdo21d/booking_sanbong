@@ -62,6 +62,9 @@ export class LayoutManagerComponent {
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'No, keep it',
+      customClass: {
+        container: 'white-bg' // Thêm lớp CSS để định nghĩa màu nền trắng
+      }
     }).then((result) => {
       if (result.value) {
         Swal.fire(

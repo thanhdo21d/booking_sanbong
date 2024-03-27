@@ -453,11 +453,11 @@
 
                           <div class="form-group">
                             <label style="padding:10px 0px" for="datetimepicker">Chọn ngày và giờ bắt đầu:</label>
-                            <input formControlName="start" type="datetime-local" class="form-control" id="datetimepicker" name="start" required>
+                            <input formControlName="start" type="datetime-local" class="form-control" id="datetimepicker" name="start" required [disabled]="isDateTimeDisabled('start')">
                         </div>
                         <div  class="form-group">
                           <label style="padding:10px 0px" for="datetimepicker">Chọn ngày và giờ kết thúc:</label>
-                          <input  formControlName="end" type="datetime-local" class="form-control" id="datetimepicker" name="end" required>
+                          <input  formControlName="end" type="datetime-local" class="form-control" id="datetimepicker" name="end" required [disabled]="isDateTimeDisabled('end')">
                       </div>
                           <textarea
                           style="margin:10px 0px"
@@ -493,7 +493,1050 @@
               </div>
             </div>
           </div>
+<!--  -->
 
+<div class="col-md-9 col-12"><div nh-block="6h1ys73" nh-block-cache="false" class="h-100">
+<div nh-anchor="dat_san" class="book-calendar h-100 bg-white p-5 rounded-8 position-relative">
+            <div class="header-book d-flex align-items-center justify-content-between mb-4">
+            <div class="time-frame">
+                <div class="btn btn-frame rounded-8 " frame="am">
+                    Khung giờ đặt sân hôm nay
+                </div>
+            </div>
+        </div>
+
+        <div class="book-calendar" nh-wrap="booking" playground="2377" time-now="1711531298">
+		    <div nh-card-item="court7" class="">
+		        <div id="table-court7" data-code="court7" class="d-flex">
+		        	<div class="day-of-week">
+
+			<div day-of-week="T4" class="day active">
+            	<b>T4</b>
+            	<small class="d-block">27/3</small>
+            </div>
+			<div day-of-week="T5" class="day ">
+            	<b>T5</b>
+            	<small class="d-block">28/3</small>
+            </div>
+			<div day-of-week="T6" class="day ">
+            	<b>T6</b>
+            	<small class="d-block">29/3</small>
+            </div>
+			<div day-of-week="T7" class="day ">
+            	<b>T7</b>
+            	<small class="d-block">30/3</small>
+            </div>
+			<div day-of-week="CN" class="day ">
+            	<b>CN</b>
+            	<small class="d-block">31/3</small>
+            </div>
+			<div day-of-week="T2" class="day ">
+            	<b>T2</b>
+            	<small class="d-block">1/4</small>
+            </div>
+			<div day-of-week="T3" class="day ">
+            	<b>T3</b>
+            	<small class="d-block">2/4</small>
+            </div>
+		        	</div>
+		        	<div class="table-price">
+		        		<div data-code="court7" class="table text-center">
+
+			<div data-day="T4" data-date="27/3/2024" class="row">
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="05:00 - 06:30" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class=" over-time frame-price">
+							<span class="price-label text-nowrap">
+								05:00 - 06:30
+							</span>
+							<div class="price-label">
+								<b>Quá hạn</b>
+							</div>
+						</div>
+					</div>
+					<div class="set-yard am d-none">
+						<div data-time-frame="06:30 - 08:00" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class=" over-time frame-price">
+							<span class="price-label text-nowrap">
+								06:30 - 08:00
+							</span>
+							<div class="price-label">
+								<b>Quá hạn</b>
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="08:00 - 09:30" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class=" over-time frame-price">
+							<span class="price-label text-nowrap">
+								08:00 - 09:30
+							</span>
+							<div class="price-label">
+								<b>Quá hạn</b>
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="09:30 - 11:00" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class=" over-time frame-price">
+							<span class="price-label text-nowrap">
+								09:30 - 11:00
+							</span>
+							<div class="price-label">
+								<b>Quá hạn</b>
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="11:00 - 12:30" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class=" over-time frame-price">
+							<span class="price-label text-nowrap">
+								11:00 - 12:30
+							</span>
+							<div class="price-label">
+								<b>Quá hạn</b>
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="12:30 - 14:00" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class=" over-time frame-price">
+							<span class="price-label text-nowrap">
+								12:30 - 14:00
+							</span>
+							<div class="price-label">
+								<b>Quá hạn</b>
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="14:00 - 15:30" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class=" over-time frame-price">
+							<span class="price-label text-nowrap">
+								14:00 - 15:30
+							</span>
+							<div class="price-label">
+								<b>Quá hạn</b>
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="15:30 - 17:00" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class=" over-time frame-price">
+							<span class="price-label text-nowrap">
+								15:30 - 17:00
+							</span>
+							<div class="price-label">
+								<b>Quá hạn</b>
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="17:00 - 18:30" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								17:00 - 18:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="18:30 - 20:00" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								18:30 - 20:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="20:00 - 21:30" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								20:00 - 21:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="21:30 - 23:00" data-day="4" data-price="800000" data-date="27/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								21:30 - 23:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+            </div>
+			<div data-day="T5" data-date="28/3/2024" class="row">
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="05:00 - 06:30" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								05:00 - 06:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="06:30 - 08:00" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								06:30 - 08:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="08:00 - 09:30" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								08:00 - 09:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="09:30 - 11:00" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								09:30 - 11:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="11:00 - 12:30" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								11:00 - 12:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="12:30 - 14:00" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								12:30 - 14:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="14:00 - 15:30" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								14:00 - 15:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="15:30 - 17:00" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								15:30 - 17:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="17:00 - 18:30" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								17:00 - 18:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="18:30 - 20:00" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								18:30 - 20:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="20:00 - 21:30" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								20:00 - 21:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="21:30 - 23:00" data-day="5" data-price="800000" data-date="28/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								21:30 - 23:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+            </div>
+			<div data-day="T6" data-date="29/3/2024" class="row">
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="05:00 - 06:30" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								05:00 - 06:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="06:30 - 08:00" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								06:30 - 08:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="08:00 - 09:30" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								08:00 - 09:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="09:30 - 11:00" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								09:30 - 11:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="11:00 - 12:30" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								11:00 - 12:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="12:30 - 14:00" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								12:30 - 14:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="14:00 - 15:30" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								14:00 - 15:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="15:30 - 17:00" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								15:30 - 17:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="17:00 - 18:30" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								17:00 - 18:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="18:30 - 20:00" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								18:30 - 20:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="20:00 - 21:30" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								20:00 - 21:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="21:30 - 23:00" data-day="6" data-price="800000" data-date="29/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								21:30 - 23:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+            </div>
+			<div data-day="T7" data-date="30/3/2024" class="row">
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="05:00 - 06:30" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								05:00 - 06:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="06:30 - 08:00" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								06:30 - 08:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="08:00 - 09:30" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								08:00 - 09:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="09:30 - 11:00" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								09:30 - 11:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="11:00 - 12:30" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								11:00 - 12:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="12:30 - 14:00" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								12:30 - 14:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="14:00 - 15:30" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								14:00 - 15:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="15:30 - 17:00" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								15:30 - 17:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="17:00 - 18:30" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								17:00 - 18:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="18:30 - 20:00" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								18:30 - 20:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="20:00 - 21:30" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								20:00 - 21:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="21:30 - 23:00" data-day="7" data-price="800000" data-date="30/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								21:30 - 23:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+            </div>
+			<div data-day="CN" data-date="31/3/2024" class="row">
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="05:00 - 06:30" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								05:00 - 06:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="06:30 - 08:00" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								06:30 - 08:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="08:00 - 09:30" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								08:00 - 09:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="09:30 - 11:00" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								09:30 - 11:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="11:00 - 12:30" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								11:00 - 12:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="12:30 - 14:00" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								12:30 - 14:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="14:00 - 15:30" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								14:00 - 15:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="15:30 - 17:00" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								15:30 - 17:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="17:00 - 18:30" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								17:00 - 18:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="18:30 - 20:00" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								18:30 - 20:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="20:00 - 21:30" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								20:00 - 21:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="21:30 - 23:00" data-day="8" data-price="800000" data-date="31/3/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								21:30 - 23:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+            </div>
+			<div data-day="T2" data-date="1/4/2024" class="row">
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="05:00 - 06:30" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								05:00 - 06:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="06:30 - 08:00" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								06:30 - 08:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="08:00 - 09:30" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								08:00 - 09:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="09:30 - 11:00" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								09:30 - 11:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="11:00 - 12:30" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								11:00 - 12:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="12:30 - 14:00" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								12:30 - 14:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="14:00 - 15:30" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								14:00 - 15:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="15:30 - 17:00" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								15:30 - 17:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="17:00 - 18:30" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								17:00 - 18:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="18:30 - 20:00" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								18:30 - 20:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="20:00 - 21:30" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								20:00 - 21:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="21:30 - 23:00" data-day="2" data-price="800000" data-date="1/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								21:30 - 23:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+            </div>
+			<div  data-day="T3" data-date="2/4/2024" class="row">
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="05:00 - 06:30" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								05:00 - 06:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="06:30 - 08:00" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								06:30 - 08:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="08:00 - 09:30" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								08:00 - 09:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="09:30 - 11:00" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								09:30 - 11:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="11:00 - 12:30" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								11:00 - 12:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard am d-none">
+						<div data-time-frame="12:30 - 14:00" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								12:30 - 14:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="14:00 - 15:30" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								14:00 - 15:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="15:30 - 17:00" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								15:30 - 17:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="17:00 - 18:30" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								17:00 - 18:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="18:30 - 20:00" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								18:30 - 20:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="20:00 - 21:30" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								20:00 - 21:30
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+					<div class="set-yard pm">
+						<div data-time-frame="21:30 - 23:00" data-day="3" data-price="800000" data-date="2/4/2024" frame-price="" class="  frame-price">
+							<span class="price-label text-nowrap">
+								21:30 - 23:00
+							</span>
+							<div class="price-label">
+								800K
+							</div>
+						</div>
+					</div>
+
+            </div>
+				        </div>
+		        	</div>
+		        </div>
+		    </div></div>
+            </div>
+
+
+<div id="modal-booking-playgroud" class="modal fade modal-form-all" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">
+                    Đặt sân
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <i class="iconsax isax-close-circle"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-add-phone-email" class="modal fade modal-form-all" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">
+
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <i class="iconsax isax-close-circle"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div></div></div>
+
+
+
+
+
+
+
+
+          <!--  -->
           <div class="detail_main_bot cls">
             <div class="frame_b_l">
               <div class="gr-box" id="box-soccer-3"></div>
@@ -686,7 +1729,7 @@
                 </div>
               </div>
             </div>
-            <div class="frame_b_r">
+            <div style="position: absolute; right:2%; top:130% !important; display:none" class="frame_b_r ">
               <div class="gr-box" id="box-soccer-8">
                 <div class="wr_products_soccer_related">
                   <h2 class="title-box title-box-mg">Sân gần đây</h2>

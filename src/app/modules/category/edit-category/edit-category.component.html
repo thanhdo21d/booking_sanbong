@@ -27,6 +27,18 @@
             </div>
           </div>
         </div>
+        <div class="form-group mb-5">
+          <input type="text" placeholder="description" formControlName="description" class="form__input">
+          <div *ngIf="editForm.get('description')?.invalid && (editForm.get('description')?.dirty || editForm.get('description')?.touched)"
+            class="text-danger">
+            <div *ngIf="editForm.get('description')?.errors?.['required']">
+              description is required.
+            </div>
+            <div *ngIf="editForm.get('name')?.errors?.['minlength']">
+              description must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
         <button type="submit" [disabled]="editForm.invalid"
           class="btn btn-primary d-flex justify-content-between align-items-center">
           <i class="fa-solid fa-save me-3"></i>

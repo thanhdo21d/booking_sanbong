@@ -40,12 +40,9 @@ export class ProductsService {
     return this.http.get<any>(`${this.baseURL}/api/Field/GetField/${id}`);
   }
   deleteFakePost(id: number | string) {
-    return this.http.put(`${baseURL}/posts/delete-fake/${id}`, {
-      deleted: true,
-    });
+    return this.http.post(`${this.baseURL}/api/Field/Delete/${id}`, {});
   }
   createPost(post: any): Observable<any> {
-    // const options = this.getAccessToken();
     return this.http.post(`${this.baseURL}/api/Field/Create`, post);
   }
 
