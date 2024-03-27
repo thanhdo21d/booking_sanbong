@@ -11,6 +11,7 @@ export interface IUser {
   is_active?: boolean;
   created_at?: Date;
   updated_at?: Date;
+  picture?: string;
   isVerified?: boolean;
   postList?: IPosts[];
   address?: string;
@@ -62,6 +63,7 @@ export interface IUserRequest {
   email?: string;
   phone?: string;
   address?: string;
+  picture?: string;
   avatar?: string;
   role?: string;
   cart?: any;

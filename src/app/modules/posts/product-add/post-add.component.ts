@@ -29,7 +29,7 @@ export class PostAddComponent {
     status: ['pending', [Validators.required]],
     price: [0, [Validators.required]],
   });
-  categories: ICategory[] = [];
+  categories: any[] = [];
   public Editor = ClassicEditor;
   public editorContent = '';
   imagePreviews: ImagePreview[] = [];
@@ -102,6 +102,9 @@ export class PostAddComponent {
     }
     if (this.postForm.value.price) {
       postData.append('price', this.postForm.value.price.toString());
+    }
+    if (this.postForm.value.category) {
+      postData.append('FieldAreaId', this.postForm.value.category.toString());
     }
     for (const image of this.urls) {
       postData.append('picture', image);

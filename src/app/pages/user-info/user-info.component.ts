@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { IPosts } from 'src/app/interfaces/Product';
 import { UserService } from 'src/app/services/users/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-user-info',
@@ -18,6 +19,9 @@ export class UserInfoComponent {
   userLocal: IUser = JSON.parse(
     localStorage.getItem(this.auth.TOKEN_USER) || '{}'
   );
+  urlImage: string = environment.API_URL + '/root/';
+  defaultImageUrl = "https://cdn5.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.jpg"
+
   listUserPosts!: IPosts[];
   avatarForm: any;
   urls: any[] = [];
@@ -91,9 +95,11 @@ export class UserInfoComponent {
   }
   handleFileInput(event: any): void {
     const files: FileList = event.target.files;
-    this.urls.push(files[0].name);
+    console.log(files)
+    this.urls.push(files[0]);
   }
-  handleSubmitPostForm() {
+  handleSubmitPostForm(event : any) {
+    event.preventDefault();
     /* lấy ra thông tin người dùng */
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     if (!user) {
@@ -106,7 +112,6 @@ export class UserInfoComponent {
     this.auth.uploadAvatarUser(imageFrom).subscribe(
       () => {
         this.toastr.success('thành công');
-        window.location.reload();
       },
       () => {
         this.toastr.error('T thất bại');

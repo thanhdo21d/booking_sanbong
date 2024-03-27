@@ -7,16 +7,12 @@
       <div class="card mb-4 mb-xl-0">
         <div class="card-header">Profile Picture</div>
 
-        <form class="card-body text-center" (submit)="handleSubmitPostForm()">
+        <form class="card-body text-center" (submit)="handleSubmitPostForm($event)">
           <!-- Profile picture image-->
           <img
               formControlName="images"
-
-
             class="img-account-profile rounded-circle mb-2 m-auto"
-            src="
-              https://cdn5.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.jpg
-            "
+            [src]=" userLocal.picture ? urlImage + userLocal.picture :defaultImageUrl"
             alt=""
           />
           <input type="file" id="file"    (change)="handleFileInput($event)"/>
